@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://olixignacious.github.io/keyholdr-site/sitemap.xml
