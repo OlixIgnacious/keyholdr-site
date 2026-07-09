@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Keyholdr — Privacy Policy</title>
-  <meta name="description" content="Privacy policy for Keyholdr, a native menu bar / system tray vault for API keys on macOS and Windows.">
-  <link rel="canonical" href="https://olixignacious.github.io/keyholdr-site/privacy.html">
+  <title>Keyholdr — Support</title>
+  <meta name="description" content="Get help with Keyholdr, the native menu bar vault for API keys on macOS.">
+  <link rel="canonical" href="https://olixignacious.github.io/keyholdr-site/support.html">
   <meta name="theme-color" content="#f4f3ef">
-  <meta name="robots" content="noindex">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
@@ -17,9 +16,9 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Keyholdr">
-  <meta property="og:url" content="https://olixignacious.github.io/keyholdr-site/privacy.html">
-  <meta property="og:title" content="Keyholdr — Privacy Policy">
-  <meta property="og:description" content="Privacy policy for Keyholdr, a native menu bar / system tray vault for API keys on macOS and Windows.">
+  <meta property="og:url" content="https://olixignacious.github.io/keyholdr-site/support.html">
+  <meta property="og:title" content="Keyholdr — Support">
+  <meta property="og:description" content="Get help with Keyholdr, the native menu bar vault for API keys on macOS.">
   <meta property="og:image" content="https://olixignacious.github.io/keyholdr-site/og-image.png">
 
   <style>
@@ -110,6 +109,25 @@
       color: var(--ink-12);
     }
 
+    .contact-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid var(--ink-12);
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: var(--ink);
+      transition: border-color 0.15s;
+    }
+    .contact-card:hover {
+      border-color: var(--ink);
+      text-decoration: none;
+    }
+
     footer {
       margin-top: 4rem;
       padding-top: 1.5rem;
@@ -136,64 +154,29 @@
   </header>
 
   <main>
-    <p class="eyebrow">Privacy · Last updated June 14, 2026</p>
-    <h1>Your data stays<br><em>on your device.</em></h1>
+    <p class="eyebrow">Support</p>
+    <h1>How can we<br><em>help you?</em></h1>
 
     <p>
-      Keyholdr is a menu bar (macOS) / system tray (Windows) utility for
-      storing and accessing API keys and other secrets on your own device.
-      This policy explains what data Keyholdr handles and how, and applies to
-      both the macOS and Windows apps.
+      Keyholdr is built and maintained by a solo developer. If you're running
+      into an issue or have a question, reach out directly — responses usually
+      arrive within a day or two.
     </p>
 
-    <h2>What Keyholdr stores</h2>
-    <p>
-      The credentials (API keys, secrets, and associated metadata such as
-      names, platforms, and tags) that you add to Keyholdr are stored
-      entirely on your local device. Secret values are stored using your
-      operating system's hardware-backed credential store — macOS Keychain
-      Services or Windows Credential Manager — the same secure storage used
-      by the OS itself for saved passwords. Metadata is stored in a local
-      JSON file on your device.
-    </p>
-
-    <h2>What Keyholdr does not do</h2>
+    <h2>Common questions</h2>
     <ul>
-      <li>Does not transmit your credentials, metadata, or any other data to any server.</li>
-      <li>Does not use analytics, telemetry, or advertising services.</li>
-      <li>Does not share any information with third parties.</li>
-      <li>Does not require an account or internet connection to function.</li>
+      <li><strong>The hotkey isn't working</strong> — make sure Keyholdr is running (look for the key icon in your menu bar). On macOS Sequoia, you may need to re-grant Accessibility permissions in System Settings → Privacy &amp; Security → Accessibility.</li>
+      <li><strong>Touch ID keeps asking for permission</strong> — on first use, macOS shows a Keychain access prompt. Choose "Always Allow" and it won't ask again.</li>
+      <li><strong>CLI not found after install</strong> — open a new terminal window after installing. If it still isn't found, add <code>export PATH="$HOME/.local/bin:$PATH"</code> to your shell profile manually.</li>
+      <li><strong>Restoring keys after reinstall</strong> — your secrets are stored in macOS Keychain, so they survive reinstalls as long as you stay on the same Mac and account. Use File → Export Vault before switching Macs.</li>
     </ul>
 
-    <h2>Biometric unlock</h2>
-    <p>
-      If you enable Touch ID / Apple Watch (macOS) or Windows Hello (Windows)
-      to unlock Keyholdr, authentication is handled entirely by the operating
-      system on your device. Keyholdr never receives or stores biometric
-      data.
-    </p>
-
-    <h2>Data deletion</h2>
-    <p>
-      All data stored by Keyholdr remains under your control. Removing a
-      credential from within the app deletes it from the OS credential store
-      (Keychain or Credential Manager) and the local metadata file.
-      Uninstalling the app does not automatically remove entries from the OS
-      credential store; you can remove them manually via Keychain Access or
-      Windows Credential Manager if desired.
-    </p>
-
-    <h2>Changes to this policy</h2>
-    <p>
-      If this policy changes, the updated version will be published at this
-      same URL with a revised "Last updated" date.
-    </p>
-
     <h2>Contact</h2>
-    <p>
-      Questions about this policy can be sent to
-      <a href="mailto:ashwini.sharma0807@gmail.com">ashwini.sharma0807@gmail.com</a>.
-    </p>
+    <p>For bug reports, feature requests, or anything else — email is the fastest way to reach me.</p>
+
+    <a class="contact-card" href="mailto:ashwini.sharma0807@gmail.com">
+      ✉ ashwini.sharma0807@gmail.com
+    </a>
 
     <footer>
       <span>Keyholdr</span>
