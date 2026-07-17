@@ -267,7 +267,7 @@ keyholdr aws</code></pre>
           <pre><code>keyholdr list
 <span class="c"># PLATFORM   LABEL     TAGS      AGE
 # github     work      dev,ci    14d
-# openai     default             3mo ⚠</span></code></pre>
+# aws        default             3mo ⚠</span></code></pre>
           <p>
             A <code>⚠</code> next to the age means the key is old enough that
             Keyholdr suggests rotating it.
@@ -276,12 +276,12 @@ keyholdr aws</code></pre>
           <h3>keyholdr get &lt;platform&gt;</h3>
           <p>
             Resolves <code>&lt;platform&gt;</code> (case-insensitive,
-            substring match — <code>keyholdr get open</code> finds
-            <code>openai</code>), prompts for Touch ID, then prints the secret
+            substring match — <code>keyholdr get git</code> finds
+            <code>github</code>), prompts for Touch ID, then prints the secret
             to stdout.
           </p>
           <pre><code><span class="c"># prints to stdout</span>
-keyholdr get openai
+keyholdr get aws
 
 <span class="c"># disambiguate when one platform has multiple keys</span>
 keyholdr get github --label work
@@ -303,14 +303,14 @@ keyholdr get github --label work --copy</code></pre>
             history.
           </p>
           <p><strong>Explicit mappings</strong>, one or more <code>-e ENV_VAR=platform[/label]</code>:</p>
-          <pre><code>keyholdr run -e OPENAI_API_KEY=openai -e GITHUB_TOKEN=github/work -- npm start</code></pre>
+          <pre><code>keyholdr run -e AWS_ACCESS_KEY_ID=aws -e GITHUB_TOKEN=github/work -- npm start</code></pre>
           <p><strong>Multi-select</strong>, with no <code>-e</code> flags, in an interactive terminal:</p>
           <pre><code>keyholdr run -- npm start</code></pre>
           <p>
             This opens the multi-select picker (<strong>⇥</strong> or
             <strong>space</strong> to mark, <strong>⏎</strong> to confirm) and
             derives conventional env var names automatically — e.g.
-            <code>GITHUB_TOKEN</code>, <code>OPENAI_API_KEY</code> (see
+            <code>GITHUB_TOKEN</code>, <code>AWS_ACCESS_KEY_ID</code> (see
             <a href="#env-vars">env var naming</a> below).
           </p>
 
@@ -325,10 +325,10 @@ keyholdr get github --label work --copy</code></pre>
 eval "$(keyholdr env)"
 
 <span class="c"># name keys directly</span>
-eval "$(keyholdr env openai github/work)"
+eval "$(keyholdr env aws github/work)"
 
 <span class="c"># .env-style NAME=value</span>
-eval "$(keyholdr env --dotenv openai)"
+eval "$(keyholdr env --dotenv aws)"
 
 <span class="c"># dry run: shows the name mapping only,
 # no Touch ID, nothing exported</span>
@@ -351,7 +351,7 @@ keyholdr env --names</code></pre>
 keyholdr add github --label work --tags dev,ci
 
 <span class="c"># piped from the clipboard</span>
-pbpaste | keyholdr add openai</code></pre>
+pbpaste | keyholdr add aws</code></pre>
           <p>
             <code>--label</code> defaults to <code>default</code>. An
             identical platform + label pair is rejected — use a different
