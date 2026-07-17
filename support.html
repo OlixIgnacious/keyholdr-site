@@ -167,8 +167,8 @@
     <ul>
       <li><strong>The hotkey isn't working</strong> — make sure Keyholdr is running (look for the key icon in your menu bar). On macOS Sequoia, you may need to re-grant Accessibility permissions in System Settings → Privacy &amp; Security → Accessibility.</li>
       <li><strong>Touch ID keeps asking for permission</strong> — on first use, macOS shows a Keychain access prompt. Choose "Always Allow" and it won't ask again.</li>
-      <li><strong>CLI not found after install</strong> — open a new terminal window after installing. If it still isn't found, add <code>export PATH="$HOME/.local/bin:$PATH"</code> to your shell profile manually.</li>
-      <li><strong>CLI not found (Mac App Store version)</strong> — the App Store build is sandboxed and can't link the CLI onto your PATH by itself. Open the app, go to the <strong>⋯ menu → Terminal Setup…</strong>, and copy the command shown there (or see the <a href="docs.html#install">install docs</a>).</li>
+      <li><strong>Getting the CLI on your PATH</strong> — open a new terminal window after installing. Still not picking up? Add <code>export PATH="$HOME/.local/bin:$PATH"</code> to your shell profile.</li>
+      <li><strong>Setting up the CLI (Mac App Store version)</strong> — open the app, go to <strong>⋯ menu → Terminal Setup…</strong>, and copy the command shown there (also in the <a href="docs.html#install">install docs</a>).</li>
       <li><strong>Restoring keys after reinstall</strong> — your secrets are stored in macOS Keychain, so they survive reinstalls as long as you stay on the same Mac and account. Use File → Export Vault before switching Macs.</li>
     </ul>
 
