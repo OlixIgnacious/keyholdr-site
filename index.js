@@ -9,7 +9,41 @@ document.addEventListener('DOMContentLoaded', () => {
   initClock();
   initDemo();
   initDownloadMenus();
+  initCodeCopyButtons();
 });
+
+/* ---- Docs: "Copy" button on every command block ---- */
+
+function initCodeCopyButtons() {
+  document.querySelectorAll('.docs-section pre > code').forEach((code) => {
+    const pre = code.parentElement;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'code-block';
+    pre.parentNode.insertBefore(wrapper, pre);
+    wrapper.appendChild(pre);
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy-btn';
+    btn.textContent = 'Copy';
+    wrapper.insertBefore(btn, pre);
+
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(code.textContent);
+        const original = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        btn.dataset.copied = 'true';
+        setTimeout(() => {
+          btn.textContent = original;
+          delete btn.dataset.copied;
+        }, 1800);
+      } catch {
+        // Clipboard unavailable — command remains selectable manually.
+      }
+    });
+  });
+}
 
 /* ---- Scroll reveals ---- */
 

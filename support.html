@@ -109,8 +109,14 @@
       color: var(--ink-12);
     }
 
-    pre {
+    .code-block {
+      position: relative;
       margin: 0.75rem 0 0;
+      max-width: 60ch;
+    }
+    li .code-block { margin-left: 0; }
+    pre {
+      margin: 0;
       padding: 0.9rem 1rem;
       background: rgba(18, 18, 18, 0.04);
       border: 1px solid var(--ink-12);
@@ -119,12 +125,33 @@
       font-size: 0.8rem;
       line-height: 1.6;
       overflow-x: auto;
-      max-width: 60ch;
     }
-    li pre { margin-left: 0; }
     code {
       font-family: var(--font-mono);
       font-size: 0.85em;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      padding: 0.3rem 0.6rem;
+      background: var(--paper);
+      border: 1px solid var(--ink-12);
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--ink-60);
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .copy-btn:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+    .copy-btn[data-copied="true"] {
+      color: var(--ink);
+      border-color: var(--ink);
     }
 
     .contact-card {
@@ -191,9 +218,12 @@
         <strong>Terminal</strong> app (search for it with Spotlight: press
         <code>⌘Space</code>, type "Terminal", hit Return), paste this in, and
         press Return:
-        <pre><code>mkdir -p ~/.local/bin
+        <div class="code-block">
+          <button class="copy-btn" type="button" data-copy-target="cli-setup-cmd">Copy</button>
+          <pre><code id="cli-setup-cmd">mkdir -p ~/.local/bin
 ln -sf /Applications/Keyholdr.app/Contents/MacOS/keyholdr-cli ~/.local/bin/keyholdr
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</code></pre>
+        </div>
         Then quit and reopen Terminal — typing <code>keyholdr</code> now works.
         (You can copy this same command from inside the Keyholdr app too: click
         the <strong>⋯</strong> button next to the search bar, then "Terminal
@@ -214,5 +244,23 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</code></pre>
       <span>&copy; 2026 Ashwini Sharma (Olix Studios)</span>
     </footer>
   </main>
+
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = document.getElementById(btn.getAttribute('data-copy-target'));
+        if (!target) return;
+        navigator.clipboard.writeText(target.textContent).then(function () {
+          var original = btn.textContent;
+          btn.textContent = 'Copied ✓';
+          btn.setAttribute('data-copied', 'true');
+          setTimeout(function () {
+            btn.textContent = original;
+            btn.removeAttribute('data-copied');
+          }, 1800);
+        });
+      });
+    });
+  </script>
 </body>
 </html>

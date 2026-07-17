@@ -814,6 +814,28 @@ body[data-theme="dark"] .header-cta:hover { background: var(--bone); color: var(
 }
 .docs-section pre .c { color: var(--bone-40); }
 
+.docs-section .code-block { position: relative; }
+.docs-section .code-block pre { margin-bottom: 0; }
+.docs-section .code-block + p,
+.docs-section .code-block + pre { margin-top: 1.25rem; }
+.docs-section .copy-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  padding: 0.3rem 0.65rem;
+  background: var(--coal-soft);
+  border: 1px solid var(--bone-14);
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--bone-60);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.docs-section .copy-btn:hover { border-color: var(--bone-60); color: var(--bone); }
+.docs-section .copy-btn[data-copied="true"] { border-color: var(--bone-60); color: var(--bone); }
+
 .docs-table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
 .docs-table {
   width: 100%;
