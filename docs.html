@@ -148,32 +148,51 @@
           <p>
             Or grab the <a href="https://github.com/OlixIgnacious/keyholdr/releases/latest" target="_blank" rel="noopener">latest release</a>
             directly — unzip <code>Keyholdr-macOS-*.zip</code> and move
-            <strong>Keyholdr.app</strong> to <code>/Applications</code>.
+            <strong>Keyholdr.app</strong> to <code>/Applications</code>. It's
+            signed and notarized, so it opens without any Gatekeeper prompt.
             Requires Apple Silicon.
           </p>
-
-          <h3>First launch (unsigned builds)</h3>
           <p>
-            Builds aren't notarized yet, so macOS blocks the first launch:
+            Or install from the <strong>Mac App Store</strong> — search for
+            "Keyholdr". Sandboxing means the App Store build can't link the
+            CLI onto your PATH by itself; see below.
           </p>
-          <ul>
-            <li><strong>macOS 15 (Sequoia) and later</strong> — open the app once, then go to <strong>System Settings → Privacy &amp; Security → "Open Anyway"</strong>.</li>
-            <li><strong>macOS 13–14</strong> — right-click the app → <strong>Open</strong>.</li>
-          </ul>
 
           <h3>CLI link</h3>
           <p>
             Homebrew links <code>keyholdr</code> onto your PATH
-            automatically. For direct downloads, link it once:
+            automatically. For a direct download, link it once:
           </p>
-          <pre><code>ln -s /Applications/Keyholdr.app/Contents/MacOS/keyholdr-cli /usr/local/bin/keyholdr</code></pre>
+          <pre><code>mkdir -p ~/.local/bin
+ln -sf /Applications/Keyholdr.app/Contents/MacOS/keyholdr-cli ~/.local/bin/keyholdr
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</code></pre>
           <p>
-            Two one-time prompts while builds are unsigned: Gatekeeper blocks
-            the quarantined CLI binary (clear it with
-            <code>xattr -dr com.apple.quarantine /Applications/Keyholdr.app</code>),
-            and the first read of each key shows a macOS Keychain consent
-            dialog — choose <strong>Always Allow</strong>. Both disappear once
-            Keyholdr ships signed builds.
+            Restart Terminal (or run <code>source ~/.zshrc</code>) afterward.
+            <code>/usr/local/bin</code> isn't user-writable on modern macOS by
+            default, which is why <code>~/.local/bin</code> is used instead —
+            the in-app CLI installer (direct-download build only) does the
+            same thing automatically via a footer button.
+          </p>
+
+          <h3>CLI link (Mac App Store build)</h3>
+          <p>
+            The App Store build is sandboxed, so it can't write to
+            <code>~/.local/bin</code> or edit your shell profile on its own —
+            use the same command as above, but point it at the App Store
+            app's embedded binary instead:
+          </p>
+          <pre><code>mkdir -p ~/.local/bin
+ln -sf /Applications/Keyholdr.app/Contents/MacOS/keyholdr-cli ~/.local/bin/keyholdr
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</code></pre>
+          <p>
+            You can also open this same snippet from inside the app: <strong>⋯
+            menu → Terminal Setup…</strong>.
+          </p>
+
+          <p>
+            The first read of each key shows a one-time macOS Keychain
+            consent dialog — choose <strong>Always Allow</strong> and it
+            won't ask again.
           </p>
         </section>
 
