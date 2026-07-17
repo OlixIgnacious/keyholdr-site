@@ -109,6 +109,24 @@
       color: var(--ink-12);
     }
 
+    pre {
+      margin: 0.75rem 0 0;
+      padding: 0.9rem 1rem;
+      background: rgba(18, 18, 18, 0.04);
+      border: 1px solid var(--ink-12);
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      max-width: 60ch;
+    }
+    li pre { margin-left: 0; }
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+    }
+
     .contact-card {
       display: inline-flex;
       align-items: center;
@@ -168,7 +186,19 @@
       <li><strong>The hotkey isn't working</strong> — make sure Keyholdr is running (look for the key icon in your menu bar). On macOS Sequoia, you may need to re-grant Accessibility permissions in System Settings → Privacy &amp; Security → Accessibility.</li>
       <li><strong>Touch ID keeps asking for permission</strong> — on first use, macOS shows a Keychain access prompt. Choose "Always Allow" and it won't ask again.</li>
       <li><strong>Getting the CLI on your PATH</strong> — open a new terminal window after installing. Still not picking up? Add <code>export PATH="$HOME/.local/bin:$PATH"</code> to your shell profile.</li>
-      <li><strong>Setting up the CLI (Mac App Store version)</strong> — open the app, go to <strong>⋯ menu → Terminal Setup…</strong>, and copy the command shown there (also in the <a href="docs.html#install">install docs</a>).</li>
+      <li>
+        <strong>Setting up the CLI (Mac App Store version)</strong> — open the
+        <strong>Terminal</strong> app (search for it with Spotlight: press
+        <code>⌘Space</code>, type "Terminal", hit Return), paste this in, and
+        press Return:
+        <pre><code>mkdir -p ~/.local/bin
+ln -sf /Applications/Keyholdr.app/Contents/MacOS/keyholdr-cli ~/.local/bin/keyholdr
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</code></pre>
+        Then quit and reopen Terminal — typing <code>keyholdr</code> now works.
+        (You can copy this same command from inside the Keyholdr app too: click
+        the <strong>⋯</strong> button next to the search bar, then "Terminal
+        Setup…".)
+      </li>
       <li><strong>Restoring keys after reinstall</strong> — your secrets are stored in macOS Keychain, so they survive reinstalls as long as you stay on the same Mac and account. Use File → Export Vault before switching Macs.</li>
     </ul>
 
