@@ -59,6 +59,7 @@
         <a href="#env-vars">Env var naming</a>
         <a href="#picker">Picker controls</a>
         <a href="#exit-codes">Exit codes</a>
+        <a href="#mcp">MCP bridge</a>
         <a href="#build">Build from source</a>
       </nav>
 
@@ -461,6 +462,115 @@ keyholdr rm</code></pre>
               </tbody>
             </table>
           </div>
+        </section>
+
+        <!-- ============ MCP bridge ============ -->
+        <section class="docs-section" id="mcp">
+          <h2>MCP bridge</h2>
+          <p>
+            <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">MCP</a>
+            (Model Context Protocol) is how tools like Claude Desktop and
+            Claude Code call out to local tools. A small bridge script lets an
+            MCP client ask Keyholdr for a secret by name instead of you
+            pasting it into a config file or a chat, and every request still
+            goes through the same Touch ID prompt as using the app directly.
+          </p>
+          <p>
+            The bridge is just a thin wrapper: it shells out to the
+            <code>keyholdr</code> CLI and hands back stdout. It never touches
+            the Keychain itself and can't skip the biometric check.
+          </p>
+
+          <h3>1. Install the SDK</h3>
+          <pre><code>npm install @modelcontextprotocol/sdk</code></pre>
+
+          <h3>2. Save the bridge script</h3>
+          <p>Save this as <code>keyholdr-mcp-bridge.mjs</code>:</p>
+          <pre><code>#!/usr/bin/env node
+import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import {
+  CallToolRequestSchema,
+  ListToolsRequestSchema,
+} from "@modelcontextprotocol/sdk/types.js";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+
+const run = promisify(execFile);
+const KEYHOLDR = process.env.KEYHOLDR_BIN || "keyholdr";
+
+const server = new Server(
+  { name: "keyholdr-bridge", version: "1.0.0" },
+  { capabilities: { tools: {} } }
+);
+
+server.setRequestHandler(ListToolsRequestSchema, async () => ({
+  tools: [
+    {
+      name: "list_keys",
+      description: "List available key names in the vault (never the secret values).",
+      inputSchema: { type: "object", properties: {} },
+    },
+    {
+      name: "get_secret",
+      description:
+        "Retrieve one secret from the local Keyholdr vault. Triggers a Touch ID prompt on the Mac running this bridge.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          platform: { type: "string", description: "Platform name, e.g. github or aws" },
+          label: { type: "string", description: "Optional label, e.g. work or personal" },
+        },
+        required: ["platform"],
+      },
+    },
+  ],
+}));
+
+server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  const { name, arguments: args = {} } = request.params;
+
+  if (name === "list_keys") {
+    const { stdout } = await run(KEYHOLDR, ["list"]);
+    return { content: [{ type: "text", text: stdout }] };
+  }
+
+  if (name === "get_secret") {
+    const cliArgs = ["get", args.platform];
+    if (args.label) cliArgs.push("--label", args.label);
+    const { stdout } = await run(KEYHOLDR, cliArgs);
+    return { content: [{ type: "text", text: stdout.trim() }] };
+  }
+
+  throw new Error(`Unknown tool: ${name}`);
+});
+
+await server.connect(new StdioServerTransport());</code></pre>
+
+          <h3>3. Point an MCP client at it</h3>
+          <p>
+            For Claude Desktop, add it to
+            <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>:
+          </p>
+          <pre><code>{
+  "mcpServers": {
+    "keyholdr": {
+      "command": "node",
+      "args": ["/absolute/path/to/keyholdr-mcp-bridge.mjs"]
+    }
+  }
+}</code></pre>
+          <p>
+            Restart the client, and it'll have <code>list_keys</code> and
+            <code>get_secret</code> tools backed by your real vault.
+          </p>
+
+          <h3>Keep in mind</h3>
+          <ul>
+            <li>Anything <code>get_secret</code> returns becomes part of the model's context for that conversation, same exposure as pasting a key into chat yourself, so only wire up secrets you're comfortable with an agent seeing transiently.</li>
+            <li>The Touch ID prompt appears on the Mac running the bridge, not remotely. If you run the bridge over SSH on a headless Mac, the CLI has no biometric prompt to show and will fail rather than silently skip it.</li>
+            <li>This bridge isn't shipped by Keyholdr. It's a pattern you run yourself; audit and adapt it before pointing it at anything sensitive.</li>
+          </ul>
         </section>
 
         <!-- ============ Build from source ============ -->
