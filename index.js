@@ -101,7 +101,8 @@ function initClock() {
   setInterval(tick, 30000);
 }
 
-/* ---- Hero demo: searchable key list with a mock biometric copy flow ---- */
+/* ---- Hero demo: a KEYS | NOTES popover. Keys copy behind a mock biometric
+        check; notes are plain text and copy instantly, as in the app. ---- */
 
 const DEMO_KEYS = [
   { platform: 'OpenAI', label: 'prod · sk-proj-4Y9f…Qx', initials: 'AI' },
@@ -110,11 +111,22 @@ const DEMO_KEYS = [
   { platform: 'AWS', label: 'deploy · AKIA…W4PZ', initials: 'AW' },
 ];
 
+const DEMO_NOTES = [
+  { platform: 'Standup — Fri', label: 'ship the notes tab · reply to App Review', initials: '¶' },
+  { platform: 'curl staging health', label: 'curl -s https://staging.example.com/health', initials: '¶' },
+  { platform: 'Call dentist', label: 'Thursday after 2pm, ask about a cleaning slot', initials: '¶' },
+];
+
 function initDemo() {
   const list = document.getElementById('demo-list');
   const search = document.getElementById('demo-search-input');
   const bio = document.getElementById('demo-bio');
   const bioText = document.getElementById('demo-bio-text');
+  const tabKeys = document.getElementById('demo-tab-keys');
+  const tabNotes = document.getElementById('demo-tab-notes');
+  const footerHint = document.getElementById('demo-footer-hint');
+  const lockText = document.getElementById('demo-lock-text');
+  const shackle = document.getElementById('demo-lock-shackle');
   if (!list || !search || !bio) return;
 
   // Windows is hidden until testing completes — restore the platform check then:
@@ -122,38 +134,83 @@ function initDemo() {
   // const bioMethod = isMac ? 'Touch ID' : 'Windows Hello';
   const bioMethod = 'Touch ID';
   let busy = false;
+  let tab = 'keys';
+
+  const TABS = {
+    keys: {
+      items: DEMO_KEYS, placeholder: 'Search keys…', empty: 'No keys match — they stay encrypted anyway.',
+      hint: '⌘N to add a key', lock: 'Locked at rest', shackle: 'M8 11V8a4 4 0 0 1 8 0v3',
+    },
+    notes: {
+      items: DEMO_NOTES, placeholder: 'Search notes…', empty: 'No notes match. ⌘N starts a new one.',
+      hint: '⌘N to add a note', lock: 'Plain text', shackle: 'M8 11V8a4 4 0 0 1 7.5-1.9',
+    },
+  };
 
   function render(filter = '') {
+    const view = TABS[tab];
     const q = filter.trim().toLowerCase();
-    const keys = DEMO_KEYS.filter(
+    const items = view.items.filter(
       (k) => !q || k.platform.toLowerCase().includes(q) || k.label.toLowerCase().includes(q)
     );
 
     list.innerHTML = '';
-    if (keys.length === 0) {
+    if (items.length === 0) {
       const empty = document.createElement('li');
       empty.className = 'demo-empty';
-      empty.textContent = 'No keys match — they stay encrypted anyway.';
+      empty.textContent = view.empty;
       list.appendChild(empty);
       return;
     }
 
-    for (const key of keys) {
+    for (const item of items) {
       const li = document.createElement('li');
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'demo-row';
       btn.innerHTML = `
-        <span class="demo-row-icon">${key.initials}</span>
+        <span class="demo-row-icon">${item.initials}</span>
         <span class="demo-row-meta">
-          <strong>${key.platform}</strong>
-          <span>${key.label}</span>
+          <strong>${item.platform}</strong>
+          <span>${item.label}</span>
         </span>
         <span class="demo-row-action">Copy</span>`;
-      btn.addEventListener('click', () => copyFlow(btn));
+      btn.addEventListener('click', () => (tab === 'keys' ? copyFlow(btn) : copyNote(btn)));
       li.appendChild(btn);
       list.appendChild(li);
     }
+  }
+
+  function setTab(next) {
+    if (next === tab || busy) return;
+    tab = next;
+    const view = TABS[tab];
+    tabKeys.setAttribute('aria-selected', String(tab === 'keys'));
+    tabNotes.setAttribute('aria-selected', String(tab === 'notes'));
+    search.placeholder = view.placeholder;
+    search.value = '';
+    footerHint.textContent = view.hint;
+    lockText.textContent = view.lock;
+    shackle.setAttribute('d', view.shackle);
+    render();
+  }
+
+  // Notes are plain text: no biometric step, just the copy confirmation.
+  function copyNote(row) {
+    if (busy) return;
+    busy = true;
+    flashCopied(row);
+  }
+
+  function flashCopied(row) {
+    const action = row.querySelector('.demo-row-action');
+    action.textContent = 'Copied ✓';
+    row.classList.add('is-copied');
+    setTimeout(() => {
+      action.textContent = 'Copy';
+      row.classList.remove('is-copied');
+      busy = false;
+    }, 1400);
   }
 
   function copyFlow(row) {
@@ -167,18 +224,13 @@ function initDemo() {
       bioText.textContent = 'Verified';
       setTimeout(() => {
         bio.classList.remove('is-active');
-        const action = row.querySelector('.demo-row-action');
-        action.textContent = 'Copied ✓';
-        row.classList.add('is-copied');
-        setTimeout(() => {
-          action.textContent = 'Copy';
-          row.classList.remove('is-copied');
-          busy = false;
-        }, 1400);
+        flashCopied(row);
       }, 450);
     }, 950);
   }
 
+  tabKeys.addEventListener('click', () => setTab('keys'));
+  tabNotes.addEventListener('click', () => setTab('notes'));
   search.addEventListener('input', () => render(search.value));
   render();
 }

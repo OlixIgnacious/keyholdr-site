@@ -19,7 +19,8 @@ Then open http://localhost:8000.
 
 - `index.html` / `index.css` / `index.js` — landing page
 - `docs.html` — documentation: architecture, install (Homebrew, direct
-  download, Mac App Store), shortcuts, full CLI reference, env var naming,
+  download, Mac App Store), scratch notes, shortcuts, full CLI reference
+  (including the full-screen terminal UI and its controls), env var naming,
   and an MCP bridge guide for wiring Keyholdr into Claude Desktop/Code
 - `support.html` — FAQ and contact
 - `privacy.html` — shared privacy policy for both apps

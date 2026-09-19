@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Keyholdr — Your keys, one keystroke away</title>
-  <meta name="description" content="Keyholdr is a native menu bar / system tray vault for API keys on macOS and Windows. Hardware-backed storage, biometric unlock, zero Electron.">
+  <meta name="description" content="Keyholdr is a native menu bar / system tray vault for API keys on macOS and Windows. Hardware-backed storage, biometric unlock, a full-screen terminal UI and quick scratch notes. Zero Electron.">
   <link rel="canonical" href="https://olixignacious.github.io/keyholdr-site/">
   <meta name="theme-color" content="#f4f3ef">
 
@@ -115,16 +115,26 @@
             </div>
           </div>
           <div class="demo-popover">
+            <div class="demo-tabs" role="tablist" aria-label="Keyholdr sections">
+              <button class="demo-tab" role="tab" id="demo-tab-keys" aria-selected="true" aria-controls="demo-list" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3"/></svg>
+                Keys <span class="demo-tab-count" id="demo-count-keys">4</span>
+              </button>
+              <button class="demo-tab" role="tab" id="demo-tab-notes" aria-selected="false" aria-controls="demo-list" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M8.5 13h7M8.5 17h5"/></svg>
+                Notes <span class="demo-tab-count" id="demo-count-notes">3</span>
+              </button>
+            </div>
             <div class="demo-search">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
-              <input id="demo-search-input" type="text" placeholder="Search keys…" autocomplete="off" spellcheck="false" aria-label="Search keys">
+              <input id="demo-search-input" type="text" placeholder="Search keys…" autocomplete="off" spellcheck="false" aria-label="Search">
             </div>
             <ul class="demo-list" id="demo-list"></ul>
             <div class="demo-footer">
-              <span>⌘N to add a key</span>
+              <span id="demo-footer-hint">⌘N to add a key</span>
               <span class="demo-lock">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
-                Locked at rest
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path id="demo-lock-shackle" d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+                <span id="demo-lock-text">Locked at rest</span>
               </span>
             </div>
             <div class="demo-bio" id="demo-bio" aria-hidden="true">
@@ -135,7 +145,7 @@
             </div>
           </div>
         </div>
-        <p class="demo-hint">Try it — click a key to copy</p>
+        <p class="demo-hint">Try it — click a key to copy, or flip to Notes</p>
       </div>
     </section>
 
@@ -146,6 +156,8 @@
         <span>Keychain Services</span><i>·</i>
         <span>AES-256-GCM export</span><i>·</i>
         <span>CLI companion</span><i>·</i>
+        <span>Terminal UI</span><i>·</i>
+        <span>Scratch notes</span><i>·</i>
         <span>680 KB</span><i>·</i>
         <span>Zero Electron</span><i>·</i>
         <span>100% native</span><i>·</i>
@@ -195,6 +207,16 @@
             <h3>Moves with you</h3>
             <p>Export the whole vault to one passphrase-encrypted file and import it on your next machine. No cloud required.</p>
           </article>
+          <article class="feature reveal">
+            <span class="feature-no">g</span>
+            <h3>Scratch notes</h3>
+            <p>A Notes tab beside Keys for the text you'd otherwise open Notes.app for — a command to re-run, a link to paste later. Autosaves as you type, one click to copy.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature-no">h</span>
+            <h3>A terminal UI</h3>
+            <p>Run <code>keyholdr</code> for a full-screen view of your keys and notes — search, copy behind Touch ID, add and delete. Every one-liner still works.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -240,6 +262,11 @@
               <a class="ledger-link" href="privacy.html">Privacy policy ↗</a>
             </div>
           </li>
+          <li class="ledger-row reveal">
+            <span class="ledger-no">2.6</span>
+            <h3>Notes aren't secrets</h3>
+            <p>Scratch notes are plain text in a local file — not in the Keychain and not behind Touch ID. Keep API keys in Keys, and use Notes for everything else.</p>
+          </li>
         </ul>
       </div>
     </section>
@@ -271,7 +298,10 @@
             <span>Backup</span><span>Passphrase-encrypted export · AES-256-GCM (macOS)</span>
           </div>
           <div class="specs-row">
-            <span>Terminal</span><span>keyholdr get · keyholdr run — Touch ID-gated CLI (macOS)</span>
+            <span>Terminal</span><span>Full-screen UI · keyholdr get · keyholdr run — Touch ID-gated CLI (macOS)</span>
+          </div>
+          <div class="specs-row">
+            <span>Notes</span><span>Plain-text scratch notes · autosaved locally, unencrypted (macOS)</span>
           </div>
           <div class="specs-row">
             <span>Footprint</span><span>~680 KB (macOS) · self-contained .exe (Windows)</span>

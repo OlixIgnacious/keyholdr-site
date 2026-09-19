@@ -54,10 +54,11 @@
         <a href="#overview">Overview</a>
         <a href="#architecture">Architecture</a>
         <a href="#install">Install</a>
+        <a href="#notes">Scratch notes</a>
         <a href="#shortcuts">Shortcuts</a>
         <a href="#cli">CLI reference</a>
         <a href="#env-vars">Env var naming</a>
-        <a href="#picker">Picker controls</a>
+        <a href="#picker">UI &amp; picker controls</a>
         <a href="#exit-codes">Exit codes</a>
         <a href="#mcp">MCP bridge</a>
         <a href="#build">Build from source</a>
@@ -69,10 +70,10 @@
           <p class="eyebrow">Documentation</p>
           <h1>Everything Keyholdr does,<br>in one place.</h1>
           <p class="lede">
-            How secrets are stored, how to install the app and CLI, and the
-            full <code>keyholdr</code> command reference — including
-            multi-select <code>run</code>/<code>env</code> and env var naming
-            conventions.
+            How secrets are stored, how to install the app and CLI, scratch
+            notes, and the full <code>keyholdr</code> command reference —
+            including the full-screen terminal UI, multi-select
+            <code>run</code>/<code>env</code> and env var naming conventions.
           </p>
         </div>
 
@@ -90,6 +91,12 @@
           <p>
             There's no dock icon, no server, no sync, and no analytics.
             Everything happens locally, gated by biometrics.
+          </p>
+          <p>
+            Beside the vault there's a <strong>Notes</strong> tab for quick,
+            plain-text scratch notes — the things you'd otherwise open
+            Notes.app for. Notes are <em>not</em> secrets and are not
+            encrypted; see <a href="#notes">Scratch notes</a>.
           </p>
         </section>
 
@@ -120,6 +127,10 @@
                 <tr>
                   <td>Unlock</td>
                   <td>Touch ID / Apple Watch (<code>LocalAuthentication</code>)</td>
+                </tr>
+                <tr>
+                  <td>Notes</td>
+                  <td><code>~/Library/Application Support/com.olixstudios.Keyholdr/notes.json</code> — plain text, <strong>not encrypted</strong>, never in the Keychain</td>
                 </tr>
               </tbody>
             </table>
@@ -198,6 +209,29 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</code></pre>
           </p>
         </section>
 
+        <!-- ============ Scratch notes ============ -->
+        <section class="docs-section" id="notes">
+          <h2>Scratch notes</h2>
+          <p>
+            A <strong>KEYS | NOTES</strong> switcher at the top of the popover
+            flips between the vault and a scrap pad for the text you'd
+            otherwise open Notes.app for: a command to re-run, a link to paste
+            later, a half-formed thought.
+          </p>
+          <ul>
+            <li><strong>Fast.</strong> <code>⌘N</code> on the Notes tab starts a new note. Type or paste — it autosaves as you go, including when the popover closes mid-sentence. No save button, no Touch ID.</li>
+            <li><strong>Searchable.</strong> Filter the list by title or body; one click on <code>COPY</code> puts the whole note on the clipboard.</li>
+            <li><strong>Tidy.</strong> Back out of a blank note and it's discarded. Deleting asks you to click twice.</li>
+            <li><strong>In the terminal too.</strong> The <a href="#cli">terminal UI</a> has the same Notes tab, sharing the same notes.</li>
+          </ul>
+          <p>
+            <strong>Notes are plain text and are not encrypted.</strong> Unlike
+            keys, they live in a regular file and are not protected by the
+            Keychain or Touch ID, so keep secrets in <strong>Keys</strong>.
+            Notes are also not included in vault export.
+          </p>
+        </section>
+
         <!-- ============ Shortcuts ============ -->
         <section class="docs-section" id="shortcuts">
           <h2>Shortcuts</h2>
@@ -208,8 +242,8 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</code></pre>
               </thead>
               <tbody>
                 <tr><td>⌃⌥⌘K</td><td>Summon or dismiss Keyholdr — works system-wide</td></tr>
-                <tr><td>⌘N</td><td>Add a new key</td></tr>
-                <tr><td>Esc</td><td>Dismiss the add/edit form</td></tr>
+                <tr><td>⌘N</td><td>Add a new key (a new note, on the Notes tab)</td></tr>
+                <tr><td>Esc</td><td>Dismiss the add/edit form (or leave the note editor)</td></tr>
                 <tr><td>just type</td><td>Search is focused by default</td></tr>
               </tbody>
             </table>
@@ -231,7 +265,7 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</code></pre>
                 <tr><th>Command</th><th>What it does</th></tr>
               </thead>
               <tbody>
-                <tr><td>keyholdr</td><td>Interactive picker (default subcommand)</td></tr>
+                <tr><td>keyholdr</td><td>Full-screen UI for keys and notes (default subcommand)</td></tr>
                 <tr><td>keyholdr list</td><td>List every key (never the secrets)</td></tr>
                 <tr><td>keyholdr get &lt;platform&gt;</td><td>Print or copy a secret</td></tr>
                 <tr><td>keyholdr run</td><td>Run a command with secrets injected as env vars</td></tr>
@@ -243,21 +277,65 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</code></pre>
           </div>
           <p>Run <code>keyholdr &lt;command&gt; --help</code> for full flag details.</p>
 
-          <h3>keyholdr / keyholdr pick [filter]</h3>
+          <h3>keyholdr / keyholdr pick [filter] — the terminal UI</h3>
           <p>
-            Opens an inline picker: type to filter by platform, label, or tag,
-            ↑↓ to move, <strong>⏎</strong> to select. After Touch ID, the
-            secret is copied to the clipboard.
+            Opens a full-screen UI with <strong>KEYS</strong> and
+            <strong>NOTES</strong> tabs, the same as the menu bar app. The left
+            pane lists entries; the right pane shows the selected one — env var
+            name, tags and dates for a key (with the secret masked), the full
+            text for a note.
           </p>
           <pre><code><span class="c"># browse everything</span>
 keyholdr
 
 <span class="c"># start pre-filtered to "aws"</span>
-keyholdr aws</code></pre>
+keyholdr aws
+
+<span class="c"># the simple inline picker instead (also: KEYHOLDR_CLASSIC=1)</span>
+keyholdr --classic</code></pre>
           <p>
-            Needs a real terminal (stdin and stderr must both be a tty). In
-            scripts or pipes, use <code>list</code>, <code>get</code>,
-            <code>run</code>, or <code>env</code> instead.
+            <strong>Keys tab.</strong> Copy and reveal need Touch ID, exactly
+            like <code>get</code>. Mark several keys with <strong>space</strong>
+            and press <strong>⏎</strong> to copy all their secrets, one per
+            line — anything it can't read is named, and the rest still copy. A
+            revealed secret hides itself after 10 seconds. <strong>⌃N</strong>
+            adds a key (the secret field is hidden as you type) and
+            <strong>⌃X</strong> deletes after a confirmation — both follow the
+            same rules as <code>keyholdr add</code> and <code>keyholdr rm</code>.
+          </p>
+          <p>
+            <strong>Notes tab.</strong> Quick plain-text notes, shared with the
+            menu bar app. <strong>⏎</strong> copies a note (no Touch ID — notes
+            aren't secrets), <strong>⌃N</strong> starts a new one and
+            <strong>⌃E</strong> edits the selected one in a multi-line editor.
+            Pasting keeps its newlines; <strong>Esc</strong> saves and closes,
+            and an empty note is discarded.
+          </p>
+          <p>
+            It draws on the terminal's alternate screen, so nothing you reveal
+            stays in your scrollback. It needs a real terminal (stdin and
+            stderr must both be a tty), a <code>TERM</code> other than
+            <code>dumb</code>, and at least 60×16 cells — below that it falls
+            back to the inline picker. In scripts or pipes, use
+            <code>list</code>, <code>get</code>, <code>run</code>, or
+            <code>env</code> instead. If a terminal is ever left in an odd
+            state, <code>reset</code> restores it.
+          </p>
+          <p>
+            <strong>⌘ shortcuts never reach a terminal.</strong> Terminal apps
+            handle ⌘ keys themselves — ⌘N in VS Code opens a new file — so the
+            UI uses Ctrl combinations. You can also just type a note's text and
+            press <strong>⏎</strong> when nothing matches: it becomes a new
+            note. To forward ⌘N to the terminal as Ctrl+N in VS Code, add this
+            to <code>keybindings.json</code>:
+          </p>
+          <pre><code>{ "key": "cmd+n", "command": "workbench.action.terminal.sendSequence",
+  "args": { "text": "\u000e" }, "when": "terminalFocus" }</code></pre>
+          <p>
+            <strong>Login-password prompts.</strong> Each key is its own
+            Keychain item, so the first time the terminal reads it macOS asks
+            for your login password. Choose <strong>Always Allow</strong> — it
+            asks once per key, then not again.
           </p>
 
           <h3>keyholdr list</h3>
@@ -428,7 +506,34 @@ keyholdr rm</code></pre>
 
         <!-- ============ Picker controls ============ -->
         <section class="docs-section" id="picker">
-          <h2>Picker controls</h2>
+          <h2>UI &amp; picker controls</h2>
+          <h3>Terminal UI</h3>
+          <div class="docs-table-wrap">
+            <table class="docs-table">
+              <thead>
+                <tr><th>Key</th><th>Action</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>type</td><td>filter the current tab (^U clears it, ^W deletes a word)</td></tr>
+                <tr><td>↑ / ↓, PgUp / PgDn, Home / End</td><td>move the selection</td></tr>
+                <tr><td>⏎</td><td>copy the selection (or every marked key). When nothing matches what you typed, create a new note (or key) from that text</td></tr>
+                <tr><td>space</td><td>mark / unmark a key (keys tab)</td></tr>
+                <tr><td>⌃R</td><td>reveal / hide the secret (keys tab, Touch ID)</td></tr>
+                <tr><td>⌃N (Ctrl+N)</td><td>new key (keys tab) or new note (notes tab)</td></tr>
+                <tr><td>⌃E</td><td>edit the selected note (notes tab)</td></tr>
+                <tr><td>⌃X</td><td>delete the selection or marked keys, after a <code>y</code> confirmation</td></tr>
+                <tr><td>⇥ / ⇧⇥ / ← / →</td><td>switch between KEYS and NOTES</td></tr>
+                <tr><td>esc</td><td>clear the filter; quit when it is already empty (saves and closes the note editor)</td></tr>
+                <tr><td>^C, ^D</td><td>quit</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Inline picker</h3>
+          <p>
+            What <code>--classic</code> shows, and what <code>rm</code>,
+            <code>run</code>, <code>env</code> and ambiguous key references use.
+          </p>
           <div class="docs-table-wrap">
             <table class="docs-table">
               <thead>
@@ -455,7 +560,7 @@ keyholdr rm</code></pre>
                 <tr><th>Code</th><th>Meaning</th></tr>
               </thead>
               <tbody>
-                <tr><td>0</td><td>Success</td></tr>
+                <tr><td>0</td><td>Success (also when you quit the terminal UI)</td></tr>
                 <tr><td>1</td><td>Validation error or declined confirmation</td></tr>
                 <tr><td>130</td><td>Picker cancelled (esc / ^C / ^D)</td></tr>
                 <tr><td>other</td><td>Forwarded from the child process for <code>keyholdr run</code></td></tr>

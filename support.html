@@ -229,6 +229,10 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</code></pre>
         the <strong>⋯</strong> button next to the search bar, then "Terminal
         Setup…".)
       </li>
+      <li><strong>The terminal asks for my login password, once per key</strong> — every key is its own Keychain item, so macOS asks the first time <code>keyholdr</code> reads each one. Choose <strong>Always Allow</strong> on each dialog and it won't ask for that key again.</li>
+      <li><strong>Some keys can't be read in the terminal</strong> — secrets saved by the Mac App Store version live in a protected part of the Keychain that the direct-download <code>keyholdr</code> can't see (and the other way round). The terminal UI names the keys it couldn't read and still copies the rest; read those from the app you saved them in, or re-add them.</li>
+      <li><strong>Are my notes encrypted?</strong> — no. Scratch notes are plain text in a local file, not in the Keychain and not behind Touch ID, and they aren't part of vault export. Keep API keys in Keys and use Notes for everything else.</li>
+      <li><strong>⌘N opens a new file instead of a note in the terminal UI</strong> — terminal apps such as VS Code keep ⌘ shortcuts for themselves. Press <code>Ctrl+N</code> instead, or type the note's text and press <code>⏎</code> when nothing matches. See the <a href="docs.html#cli">CLI reference</a> for a VS Code keybinding that forwards ⌘N.</li>
       <li><strong>Restoring keys after reinstall</strong> — your secrets are stored in macOS Keychain, so they survive reinstalls as long as you stay on the same Mac and account. Use File → Export Vault before switching Macs.</li>
     </ul>
 

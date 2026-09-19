@@ -357,6 +357,43 @@ body[data-theme="dark"] .header-cta:hover { background: var(--bone); color: var(
 
 .demo-popover { position: relative; padding: 0.85rem; }
 
+.demo-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  margin-bottom: 0.6rem;
+  border: 1px solid var(--ink-12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+}
+.demo-tab {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.6rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-60);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.demo-tab svg { width: 0.8rem; height: 0.8rem; }
+.demo-tab:hover { color: var(--ink); }
+.demo-tab[aria-selected="true"] {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14), 0 0 0 0.5px rgba(0, 0, 0, 0.06);
+}
+.demo-tab:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.demo-tab-count { color: var(--ink-40); }
+
 .demo-search {
   display: flex;
   align-items: center;
