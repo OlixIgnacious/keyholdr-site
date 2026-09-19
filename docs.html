@@ -167,8 +167,9 @@
           </p>
           <p>
             Or install from the <strong>Mac App Store</strong> — search for
-            "Keyholdr". Sandboxing means the App Store build can't link the
-            CLI onto your PATH by itself; see below.
+            "Keyholdr". Sandboxing limits the command-line tool in the App
+            Store build; for the terminal, use the Homebrew or direct-download
+            build (see below).
           </p>
 
           <h3>CLI link</h3>
@@ -187,19 +188,20 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</code></pre>
             same thing automatically via a footer button.
           </p>
 
-          <h3>CLI link (Mac App Store build)</h3>
+          <h3>Terminal with the Mac App Store build</h3>
           <p>
-            The App Store build is sandboxed, so it can't write to
-            <code>~/.local/bin</code> or edit your shell profile on its own —
-            use the same command as above, but point it at the App Store
-            app's embedded binary instead:
+            The App Store build is sandboxed, which limits the command-line
+            tool bundled inside it — it can't put itself on your PATH and it
+            can't run the full-screen <a href="#cli">terminal UI</a>. If you
+            want <code>keyholdr</code> in the terminal, install the Homebrew or
+            direct-download build alongside it; it reads the same vault:
           </p>
-          <pre><code>mkdir -p ~/.local/bin
-ln -sf /Applications/Keyholdr.app/Contents/MacOS/keyholdr-cli ~/.local/bin/keyholdr
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</code></pre>
+          <pre><code>brew install --cask olixignacious/tap/keyholdr</code></pre>
           <p>
-            You can also open this same snippet from inside the app: <strong>⋯
-            menu → Terminal Setup…</strong>.
+            You can copy that command from inside the App Store app too:
+            <strong>⋯ menu → Terminal Setup…</strong>. Keys whose secrets were
+            saved by the App Store app may need re-adding for the terminal to
+            read them — see the <a href="support.html">FAQ</a>.
           </p>
 
           <p>
