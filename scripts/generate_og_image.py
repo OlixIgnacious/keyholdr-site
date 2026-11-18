@@ -18,7 +18,8 @@ sub_font = ImageFont.truetype("/System/Library/Fonts/SFNS.ttf", 40)
 margin = 80
 
 # Eyebrow
-draw.text((margin, 70), "OPEN SOURCE · NATIVE MACOS & WINDOWS", font=mono, fill=INK_60)
+# WINDOWS-HIDDEN (restore at launch): "OPEN SOURCE · NATIVE MACOS & WINDOWS"
+draw.text((margin, 70), "OPEN SOURCE · NATIVE FOR MACOS", font=mono, fill=INK_60)
 
 # Title
 draw.text((margin, 160), "Keyholdr", font=title_font, fill=INK)

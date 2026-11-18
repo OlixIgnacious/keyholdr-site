@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Keyholdr — API key manager for macOS and Windows</title>
-  <meta name="description" content="Keyholdr is a native API key manager in your Mac menu bar or Windows tray: hardware-backed storage, Touch ID unlock, a CLI and a terminal UI. Under 1 MB.">
+  <title>Keyholdr — API key manager for your Mac menu bar</title>
+  <meta name="description" content="Keyholdr is a native API key manager in your Mac menu bar: Keychain storage, Touch ID unlock, a CLI and a terminal UI. Under 1 MB, no Electron.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://olixignacious.github.io/keyholdr-site/">
   <meta name="theme-color" content="#f4f3ef">
@@ -23,16 +23,16 @@
   <meta property="og:site_name" content="Keyholdr">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://olixignacious.github.io/keyholdr-site/">
-  <meta property="og:title" content="Keyholdr — API key manager for macOS and Windows">
-  <meta property="og:description" content="A native, hardware-secured vault for your API keys, living in your menu bar (macOS) or system tray (Windows).">
+  <meta property="og:title" content="Keyholdr — API key manager for your Mac menu bar">
+  <meta property="og:description" content="A native, hardware-secured vault for your API keys, living in your Mac menu bar.">
   <meta property="og:image" content="https://olixignacious.github.io/keyholdr-site/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Keyholdr: a native API key manager in the macOS menu bar and the Windows system tray.">
+  <meta property="og:image:alt" content="Keyholdr: a native API key manager in the macOS menu bar.">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Keyholdr — API key manager for macOS and Windows">
-  <meta name="twitter:description" content="A native vault for API keys on macOS and Windows. Hardware-backed, biometric unlock, strictly local.">
+  <meta name="twitter:title" content="Keyholdr — API key manager for your Mac menu bar">
+  <meta name="twitter:description" content="A native vault for API keys on macOS. Hardware-backed, Touch ID unlock, strictly local.">
   <meta name="twitter:image" content="https://olixignacious.github.io/keyholdr-site/og-image.png">
 
   <script type="application/ld+json">
@@ -45,17 +45,17 @@
         "name": "Keyholdr",
         "url": "https://olixignacious.github.io/keyholdr-site/",
         "inLanguage": "en",
-        "description": "A native API key manager for the macOS menu bar and the Windows system tray."
+        "description": "A native API key manager for the macOS menu bar."
       },
       {
         "@type": "SoftwareApplication",
         "@id": "https://olixignacious.github.io/keyholdr-site/#app",
         "name": "Keyholdr",
         "url": "https://olixignacious.github.io/keyholdr-site/",
-        "description": "A native API key manager that lives in the macOS menu bar and the Windows system tray. Hardware-backed storage, Touch ID and Windows Hello unlock, a CLI and a full-screen terminal UI, and scratch notes. Under 1 MB, no Electron.",
+        "description": "A native API key manager that lives in the macOS menu bar. Keychain-backed storage, Touch ID unlock, a CLI and a full-screen terminal UI, and scratch notes. Under 1 MB, no Electron.",
         "applicationCategory": "DeveloperApplication",
         "applicationSubCategory": "API key manager",
-        "operatingSystem": "macOS, Windows",
+        "operatingSystem": "macOS",
         "image": "https://olixignacious.github.io/keyholdr-site/og-image.png",
         "offers": {
           "@type": "Offer",
@@ -64,9 +64,9 @@
         },
         "downloadUrl": "https://apps.apple.com/in/app/keyholdr/id6789253781?mt=12",
         "featureList": [
-          "Lives in the macOS menu bar and the Windows system tray",
-          "Secrets in the macOS Keychain and Windows Credential Manager",
-          "Touch ID and Windows Hello unlock",
+          "Lives in the macOS menu bar",
+          "Secrets in the macOS Keychain",
+          "Touch ID and Apple Watch unlock",
           "Global shortcut to search and copy a key",
           "Auto-lock when the popover closes",
           "Passphrase-encrypted (AES-256-GCM) export and import",
@@ -112,7 +112,7 @@
     <!-- ============ Hero ============ -->
     <section class="hero" data-section-theme="light">
       <div class="hero-inner">
-        <p class="eyebrow reveal">Native macOS &amp; Windows</p>
+        <p class="eyebrow reveal">Native for macOS</p><!-- WINDOWS-HIDDEN (restore at launch): <p class="eyebrow reveal">Native macOS &amp; Windows</p> -->
         <h1 class="hero-title">
           <span class="line-mask"><span class="line">Your keys,</span></span>
           <span class="line-mask"><span class="line">one keystroke</span></span>
@@ -126,6 +126,7 @@
           </p>
           <div class="hero-actions">
             <a class="btn btn-solid" href="https://apps.apple.com/in/app/keyholdr/id6789253781?mt=12" target="_blank" rel="noopener">Download on the Mac App Store</a>
+<!-- WINDOWS-HIDDEN (restore at launch):
             <details class="dl-menu">
               <summary class="btn btn-ghost">Download for Windows <span class="dl-caret">▾</span></summary>
               <div class="dl-pop" role="menu">
@@ -135,6 +136,7 @@
                 </a>
               </div>
             </details>
+-->
           </div>
         </div>
       </div>
@@ -278,12 +280,12 @@
           <li class="ledger-row reveal">
             <span class="ledger-no">2.1</span>
             <h3>System vaults only</h3>
-            <p>Secrets are written straight to your OS's hardware-backed credential store — macOS Keychain Services or Windows Credential Manager — encrypted by the OS.</p>
+            <p>Secrets are written straight to your Mac's hardware-backed credential store, Keychain Services, encrypted by macOS.</p><!-- WINDOWS-HIDDEN (restore at launch): <p>Secrets are written straight to your OS's hardware-backed credential store — macOS Keychain Services or Windows Credential Manager — encrypted by the OS.</p> -->
           </li>
           <li class="ledger-row reveal">
             <span class="ledger-no">2.2</span>
             <h3>Biometric gate</h3>
-            <p>Touch ID, Apple Watch, or Windows Hello is required before any secret is decrypted. Physical presence, every time.</p>
+            <p>Touch ID or Apple Watch is required before any secret is decrypted. Physical presence, every time.</p><!-- WINDOWS-HIDDEN (restore at launch): <p>Touch ID, Apple Watch, or Windows Hello is required before any secret is decrypted. Physical presence, every time.</p> -->
           </li>
           <li class="ledger-row reveal">
             <span class="ledger-no">2.3</span>
@@ -321,38 +323,40 @@
       <div class="section-body">
         <div class="specs reveal">
           <div class="specs-row">
-            <span>Stack</span><span>Swift 6 · SwiftUI (macOS) · C# 12 · WPF (Windows)</span>
+            <span>Stack</span><span>Swift 6 · SwiftUI</span><!-- WINDOWS-HIDDEN (restore at launch): <span>Stack</span><span>Swift 6 · SwiftUI (macOS) · C# 12 · WPF (Windows)</span> -->
           </div>
           <div class="specs-row">
-            <span>Form</span><span>Menu bar / system tray accessory</span>
+            <span>Form</span><span>Menu bar accessory</span><!-- WINDOWS-HIDDEN (restore at launch): <span>Form</span><span>Menu bar / system tray accessory</span> -->
           </div>
           <div class="specs-row">
-            <span>Vault</span><span>Keychain Services (macOS) · Credential Manager (Windows)</span>
+            <span>Vault</span><span>Keychain Services</span><!-- WINDOWS-HIDDEN (restore at launch): <span>Vault</span><span>Keychain Services (macOS) · Credential Manager (Windows)</span> -->
           </div>
           <div class="specs-row">
-            <span>Unlock</span><span>Touch ID · Apple Watch (macOS) · Windows Hello (Windows)</span>
+            <span>Unlock</span><span>Touch ID · Apple Watch</span><!-- WINDOWS-HIDDEN (restore at launch): <span>Unlock</span><span>Touch ID · Apple Watch (macOS) · Windows Hello (Windows)</span> -->
           </div>
           <div class="specs-row">
-            <span>Summon</span><span>⌃⌥⌘K system-wide (macOS) · tray icon (Windows)</span>
+            <span>Summon</span><span>⌃⌥⌘K system-wide</span><!-- WINDOWS-HIDDEN (restore at launch): <span>Summon</span><span>⌃⌥⌘K system-wide (macOS) · tray icon (Windows)</span> -->
           </div>
           <div class="specs-row">
-            <span>Backup</span><span>Passphrase-encrypted export · AES-256-GCM (macOS)</span>
+            <span>Backup</span><span>Passphrase-encrypted export · AES-256-GCM</span><!-- WINDOWS-HIDDEN (restore at launch): <span>Backup</span><span>Passphrase-encrypted export · AES-256-GCM (macOS)</span> -->
           </div>
           <div class="specs-row">
-            <span>Terminal</span><span>Full-screen UI · keyholdr get · keyholdr run — Touch ID-gated CLI (macOS)</span>
+            <span>Terminal</span><span>Full-screen UI · keyholdr get · keyholdr run — Touch ID-gated CLI</span><!-- WINDOWS-HIDDEN (restore at launch): <span>Terminal</span><span>Full-screen UI · keyholdr get · keyholdr run — Touch ID-gated CLI (macOS)</span> -->
           </div>
           <div class="specs-row">
-            <span>Notes</span><span>Plain-text scratch notes · autosaved locally, unencrypted (macOS)</span>
+            <span>Notes</span><span>Plain-text scratch notes · autosaved locally, unencrypted</span><!-- WINDOWS-HIDDEN (restore at launch): <span>Notes</span><span>Plain-text scratch notes · autosaved locally, unencrypted (macOS)</span> -->
           </div>
           <div class="specs-row">
-            <span>Footprint</span><span>~680 KB (macOS) · self-contained .exe (Windows)</span>
+            <span>Footprint</span><span>~680 KB</span><!-- WINDOWS-HIDDEN (restore at launch): <span>Footprint</span><span>~680 KB (macOS) · self-contained .exe (Windows)</span> -->
           </div>
         </div>
+<!-- WINDOWS-HIDDEN (restore at launch):
         <p class="lede reveal" style="margin-top: 1.5rem;">
           The Windows app covers the core vault — tray popover, Credential
           Manager storage, and Windows Hello unlock. The export/backup format
           and CLI companion are macOS-only for now and are next up for Windows.
         </p>
+-->
       </div>
     </section>
 
@@ -364,6 +368,7 @@
       </h2>
       <div class="cta-actions reveal">
         <a class="btn btn-solid btn-lg" href="https://apps.apple.com/in/app/keyholdr/id6789253781?mt=12" target="_blank" rel="noopener">Download on the Mac App Store</a>
+<!-- WINDOWS-HIDDEN (restore at launch):
         <details class="dl-menu">
           <summary class="btn btn-ghost btn-lg">Download for Windows <span class="dl-caret">▾</span></summary>
           <div class="dl-pop" role="menu">
@@ -373,6 +378,7 @@
             </a>
           </div>
         </details>
+-->
       </div>
       <p class="cta-note reveal">Free · no account, ever</p>
     </section>
@@ -387,12 +393,14 @@
         <a href="https://apps.apple.com/in/app/keyholdr/id6789253781?mt=12" target="_blank" rel="noopener">Mac App Store</a>
         <a href="support.html">Support</a>
       </div>
+<!-- WINDOWS-HIDDEN (restore at launch):
       <div class="footer-col">
         <span class="footer-label">Windows</span>
         <a href="https://github.com/OlixIgnacious/keyholdr-windows" target="_blank" rel="noopener">GitHub</a>
         <a href="https://github.com/OlixIgnacious/keyholdr-windows/releases" target="_blank" rel="noopener">Releases</a>
         <a href="https://github.com/OlixIgnacious/keyholdr-windows/issues" target="_blank" rel="noopener">Issues</a>
       </div>
+-->
       <div class="footer-col">
         <span class="footer-label">Site</span>
         <a href="#product">Product</a>
