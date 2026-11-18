@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Keyholdr — Your keys, one keystroke away</title>
-  <meta name="description" content="Keyholdr is a native menu bar / system tray vault for API keys on macOS and Windows. Hardware-backed storage, biometric unlock, a full-screen terminal UI and quick scratch notes. Zero Electron.">
+  <title>Keyholdr — API key manager for macOS and Windows</title>
+  <meta name="description" content="Keyholdr is a native API key manager in your Mac menu bar or Windows tray: hardware-backed storage, Touch ID unlock, a CLI and a terminal UI. Under 1 MB.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://olixignacious.github.io/keyholdr-site/">
   <meta name="theme-color" content="#f4f3ef">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,32 +21,70 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Keyholdr">
+  <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://olixignacious.github.io/keyholdr-site/">
-  <meta property="og:title" content="Keyholdr — Your keys, one keystroke away">
+  <meta property="og:title" content="Keyholdr — API key manager for macOS and Windows">
   <meta property="og:description" content="A native, hardware-secured vault for your API keys, living in your menu bar (macOS) or system tray (Windows).">
   <meta property="og:image" content="https://olixignacious.github.io/keyholdr-site/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Keyholdr: a native API key manager in the macOS menu bar and the Windows system tray.">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Keyholdr — Your keys, one keystroke away">
+  <meta name="twitter:title" content="Keyholdr — API key manager for macOS and Windows">
   <meta name="twitter:description" content="A native vault for API keys on macOS and Windows. Hardware-backed, biometric unlock, strictly local.">
   <meta name="twitter:image" content="https://olixignacious.github.io/keyholdr-site/og-image.png">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Keyholdr",
-    "url": "https://olixignacious.github.io/keyholdr-site/",
-    "description": "A native menu bar / system tray vault for API keys on macOS and Windows. Hardware-backed storage, biometric unlock.",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "macOS, Windows",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://olixignacious.github.io/keyholdr-site/#website",
+        "name": "Keyholdr",
+        "url": "https://olixignacious.github.io/keyholdr-site/",
+        "inLanguage": "en",
+        "description": "A native API key manager for the macOS menu bar and the Windows system tray."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://olixignacious.github.io/keyholdr-site/#app",
+        "name": "Keyholdr",
+        "url": "https://olixignacious.github.io/keyholdr-site/",
+        "description": "A native API key manager that lives in the macOS menu bar and the Windows system tray. Hardware-backed storage, Touch ID and Windows Hello unlock, a CLI and a full-screen terminal UI, and scratch notes. Under 1 MB, no Electron.",
+        "applicationCategory": "DeveloperApplication",
+        "applicationSubCategory": "API key manager",
+        "operatingSystem": "macOS, Windows",
+        "image": "https://olixignacious.github.io/keyholdr-site/og-image.png",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "downloadUrl": "https://apps.apple.com/in/app/keyholdr/id6789253781?mt=12",
+        "featureList": [
+          "Lives in the macOS menu bar and the Windows system tray",
+          "Secrets in the macOS Keychain and Windows Credential Manager",
+          "Touch ID and Windows Hello unlock",
+          "Global shortcut to search and copy a key",
+          "Auto-lock when the popover closes",
+          "Passphrase-encrypted (AES-256-GCM) export and import",
+          "Command-line companion and full-screen terminal UI",
+          "Scratch notes",
+          "Under 1 MB, no Electron"
+        ],
+        "sameAs": [
+          "https://apps.apple.com/in/app/keyholdr/id6789253781?mt=12",
+          "https://github.com/OlixIgnacious/keyholdr"
+        ],
+        "author": {
+          "@type": "Organization",
+          "name": "Olix Studios",
+          "url": "https://github.com/OlixIgnacious"
+        }
+      }
+    ]
   }
   </script>
 </head>

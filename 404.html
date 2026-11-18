@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Page not found · Keyholdr</title>
+  <meta name="description" content="This page does not exist. Go back to Keyholdr, the native API key manager for macOS and Windows.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f4f3ef">
+  <link rel="icon" type="image/svg+xml" href="https://olixignacious.github.io/keyholdr-site/favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="https://olixignacious.github.io/keyholdr-site/favicon-48.png">
+  <link rel="apple-touch-icon" href="https://olixignacious.github.io/keyholdr-site/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f4f3ef;
+      --ink: #121212;
+      --ink-60: rgba(18, 18, 18, 0.6);
+      --ink-12: rgba(18, 18, 18, 0.12);
+      --font-sans: "Onest", -apple-system, "Segoe UI", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+      --gutter: clamp(1.25rem, 4vw, 4rem);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 1.5rem max(var(--gutter), env(safe-area-inset-left, 0px));
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    header a { display: inline-flex; align-items: center; gap: 0.55rem; color: inherit; text-decoration: none; }
+    header img { width: 1.6rem; height: 1.6rem; }
+    main {
+      flex: 1;
+      display: grid;
+      align-content: center;
+      gap: 1.25rem;
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem max(var(--gutter), env(safe-area-inset-right, 0px)) 6rem max(var(--gutter), env(safe-area-inset-left, 0px));
+    }
+    .eyebrow { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em; color: var(--ink-60); text-transform: uppercase; }
+    h1 { font-weight: 500; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.01em; line-height: 1.15; }
+    p { color: var(--ink-60); max-width: 52ch; }
+    .links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
+    .links a {
+      padding: 0.7rem 1.2rem;
+      border: 1px solid var(--ink-12);
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--ink);
+      text-decoration: none;
+      transition: border-color 0.15s;
+    }
+    .links a:first-child { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .links a:hover { border-color: var(--ink); }
+    .links a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="https://olixignacious.github.io/keyholdr-site/"><img src="https://olixignacious.github.io/keyholdr-site/favicon.svg" alt="">Keyholdr</a>
+  </header>
+  <main>
+    <span class="eyebrow">404</span>
+    <h1>This key isn't in the vault.</h1>
+    <p>The page you asked for doesn't exist. These ones do.</p>
+    <nav class="links" aria-label="Pages">
+      <a href="https://olixignacious.github.io/keyholdr-site/">Home</a>
+      <a href="https://olixignacious.github.io/keyholdr-site/docs.html">Docs</a>
+      <a href="https://olixignacious.github.io/keyholdr-site/support.html">Support</a>
+    </nav>
+  </main>
+</body>
+</html>
