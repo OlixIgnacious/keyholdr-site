@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Keyholdr blog</title>
+    <link>https://olixignacious.github.io/keyholdr-site/blog/</link>
+    <atom:link href="https://olixignacious.github.io/keyholdr-site/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Practical guides to storing, loading and rotating API keys on a Mac.</description>
+    <language>en</language>
+    <lastBuildDate>Sun, 22 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Where to store API keys on a Mac (and why .env files leak)</title>
+      <link>https://olixignacious.github.io/keyholdr-site/blog/where-to-store-api-keys-on-a-mac/</link>
+      <guid isPermaLink="true">https://olixignacious.github.io/keyholdr-site/blog/where-to-store-api-keys-on-a-mac/</guid>
+      <pubDate>Sun, 22 Nov 2026 12:00:00 GMT</pubDate>
+      <description>How keys leak from shell profiles, .env files and history, and how to keep them in the macOS Keychain until a command needs one.</description>
+    </item>
+  </channel>
+</rss>

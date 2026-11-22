@@ -23,4 +23,8 @@ Then open http://localhost:8000.
   (including the full-screen terminal UI and its controls), env var naming,
   and an MCP bridge guide for wiring Keyholdr into Claude Desktop/Code
 - `support.html` — FAQ and contact
+- `blog/` — blog: `index.html` (post list), one folder per post
+  (`blog/<slug>/index.html`), shared `blog.css` / `blog.js`, and the RSS feed
+  `feed.xml`. A new post goes in the list, `feed.xml`, `sitemap.xml` and
+  `sitemap.txt`
 - `privacy.html` — shared privacy policy for both apps

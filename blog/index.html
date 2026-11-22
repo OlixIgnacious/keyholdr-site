@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Keyholdr blog: API key security for developers on the Mac</title>
+  <meta name="description" content="Practical guides to storing, loading and rotating API keys on a Mac: the macOS Keychain, .env files, shell secrets and Touch ID, from the maker of Keyholdr.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://olixignacious.github.io/keyholdr-site/blog/">
+  <link rel="alternate" type="application/rss+xml" title="Keyholdr blog" href="https://olixignacious.github.io/keyholdr-site/blog/feed.xml">
+  <meta name="theme-color" content="#f4f3ef">
+
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="blog.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Keyholdr">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://olixignacious.github.io/keyholdr-site/blog/">
+  <meta property="og:title" content="Keyholdr blog: API key security for developers on the Mac">
+  <meta property="og:description" content="Practical guides to storing, loading and rotating API keys on a Mac.">
+  <meta property="og:image" content="https://olixignacious.github.io/keyholdr-site/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Keyholdr: a native API key manager in the macOS menu bar.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Keyholdr blog: API key security for developers on the Mac">
+  <meta name="twitter:description" content="Practical guides to storing, loading and rotating API keys on a Mac.">
+  <meta name="twitter:image" content="https://olixignacious.github.io/keyholdr-site/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Blog",
+        "name": "Keyholdr blog",
+        "url": "https://olixignacious.github.io/keyholdr-site/blog/",
+        "publisher": { "@type": "Organization", "name": "Olix Studios" },
+        "blogPost": [
+          {
+            "@type": "BlogPosting",
+            "headline": "Where to store API keys on a Mac (and why .env files leak)",
+            "url": "https://olixignacious.github.io/keyholdr-site/blog/where-to-store-api-keys-on-a-mac/",
+            "datePublished": "2026-11-22",
+            "author": { "@type": "Person", "name": "Ashwini Sharma" }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Keyholdr", "item": "https://olixignacious.github.io/keyholdr-site/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://olixignacious.github.io/keyholdr-site/blog/" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9" cy="9" r="4.25"/>
+        <path d="M12 12l7.5 7.5M16.5 16.5l2-2M19 19l2-2"/>
+      </svg>
+      <span>Keyholdr</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../docs.html">Docs</a>
+      <a href="./" aria-current="page">Blog</a>
+      <a href="../support.html">Support</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="eyebrow">Blog</p>
+    <h1>Keeping API keys safe on your Mac</h1>
+    <p class="lede">Practical guides to storing, loading and rotating API keys without leaving them in plain-text files, from the maker of Keyholdr.</p>
+
+    <!-- Newest first. When adding a post, also update feed.xml, sitemap.xml and sitemap.txt. -->
+    <ul class="post-list">
+      <li>
+        <a href="where-to-store-api-keys-on-a-mac/">
+          <time datetime="2026-11-22">22 Nov 2026</time>
+          <h2>Where to store API keys on a Mac (and why .env files leak)</h2>
+          <p>How keys leak from shell profiles, .env files and history, and how to keep them in the macOS Keychain until a command needs one.</p>
+        </a>
+      </li>
+    </ul>
+
+    <footer>
+      <span>© 2026 Ashwini Sharma (Olix Studios)</span>
+      <nav aria-label="Site">
+        <a href="../">Home</a>
+        <a href="feed.xml">RSS</a>
+        <a href="../privacy.html">Privacy</a>
+      </nav>
+    </footer>
+  </main>
+</body>
+</html>

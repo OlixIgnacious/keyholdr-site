@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Where to store API keys on a Mac (and why .env files leak) | Keyholdr</title>
+  <meta name="description" content="The safest place for API keys on a Mac is the macOS Keychain, loaded into a command only when it runs. How keys leak from .env files, shell profiles and history, and how to fix it.">
+  <meta name="author" content="Ashwini Sharma">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://olixignacious.github.io/keyholdr-site/blog/where-to-store-api-keys-on-a-mac/">
+  <link rel="alternate" type="application/rss+xml" title="Keyholdr blog" href="https://olixignacious.github.io/keyholdr-site/blog/feed.xml">
+  <meta name="theme-color" content="#f4f3ef">
+
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="../../favicon-48.png">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../blog.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Keyholdr">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://olixignacious.github.io/keyholdr-site/blog/where-to-store-api-keys-on-a-mac/">
+  <meta property="og:title" content="Where to store API keys on a Mac (and why .env files leak)">
+  <meta property="og:description" content="The safest place for API keys on a Mac is the macOS Keychain, loaded into a command only when it runs. How keys leak, and how to fix it.">
+  <meta property="og:image" content="https://olixignacious.github.io/keyholdr-site/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Keyholdr: a native API key manager in the macOS menu bar.">
+  <meta property="article:published_time" content="2026-11-22">
+  <meta property="article:author" content="Ashwini Sharma">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Where to store API keys on a Mac (and why .env files leak)">
+  <meta name="twitter:description" content="The safest place for API keys on a Mac is the macOS Keychain, loaded into a command only when it runs. How keys leak, and how to fix it.">
+  <meta name="twitter:image" content="https://olixignacious.github.io/keyholdr-site/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "Where to store API keys on a Mac (and why .env files leak)",
+        "description": "The safest place for API keys on a Mac is the macOS Keychain, loaded into a command only when it runs. How keys leak from .env files, shell profiles and history, and how to fix it.",
+        "datePublished": "2026-11-22",
+        "dateModified": "2026-11-22",
+        "author": { "@type": "Person", "name": "Ashwini Sharma", "url": "https://medium.com/@ashwini.sharma0807" },
+        "publisher": { "@type": "Organization", "name": "Olix Studios", "logo": { "@type": "ImageObject", "url": "https://olixignacious.github.io/keyholdr-site/apple-touch-icon.png" } },
+        "image": "https://olixignacious.github.io/keyholdr-site/og-image.png",
+        "mainEntityOfPage": "https://olixignacious.github.io/keyholdr-site/blog/where-to-store-api-keys-on-a-mac/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Keyholdr", "item": "https://olixignacious.github.io/keyholdr-site/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://olixignacious.github.io/keyholdr-site/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Where to store API keys on a Mac", "item": "https://olixignacious.github.io/keyholdr-site/blog/where-to-store-api-keys-on-a-mac/" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../../">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9" cy="9" r="4.25"/>
+        <path d="M12 12l7.5 7.5M16.5 16.5l2-2M19 19l2-2"/>
+      </svg>
+      <span>Keyholdr</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../docs.html">Docs</a>
+      <a href="../" aria-current="page">Blog</a>
+      <a href="../../support.html">Support</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <p class="eyebrow"><a href="../">Blog</a> · Security</p>
+      <h1>Where to store API keys on a Mac (and why .env files leak)</h1>
+      <p class="lede">Most API keys on a developer's Mac live in plain-text files that several other programs can read. Here is where they usually end up, how each place leaks, and a setup that keeps them locked until the moment a command needs one.</p>
+      <p class="byline">Ashwini Sharma · <time datetime="2026-11-22">22 November 2026</time> · 7 min read</p>
+
+      <div class="answer">
+        <p><strong>Short answer:</strong> keep API keys in the <strong>macOS Keychain</strong>, which encrypts them and can ask for Touch ID before releasing one, and pass a key to a program only for the one command that needs it. Don't keep them in <code>~/.zshrc</code>, a committed <code>.env</code> file, notes apps or chat messages.</p>
+      </div>
+
+      <h2>Where API keys usually end up</h2>
+      <p>Nobody decides to store a secret badly. A key arrives in a dashboard, you need it working in the next five minutes, and it lands in whichever place is closest. These are the usual ones.</p>
+
+      <h3>1. Your shell profile</h3>
+      <p>Adding <code>export OPENAI_API_KEY=sk-…</code> to <code>~/.zshrc</code> is the most common shortcut. It works everywhere, which is the problem: <strong>every process you start inherits it</strong>. That includes your editor, its extensions, a dev server, and any package install script that runs during <code>npm install</code>. Profiles also tend to end up in public dotfiles repositories.</p>
+
+      <h3>2. A <code>.env</code> file in the project</h3>
+      <p>A <code>.env</code> file is better than a profile because it's scoped to one project, but it is still a plain-text file on disk, and it leaks in quiet ways:</p>
+      <ul>
+        <li><strong>Committed by accident.</strong> One missing line in <code>.gitignore</code>, or a <code>git add -f</code>, and the key is in history. Deleting it in a later commit doesn't remove it from history; anyone with the repo can still find it.</li>
+        <li><strong>Copied into images.</strong> A <code>COPY . .</code> in a Dockerfile copies <code>.env</code> into the image unless it's listed in <code>.dockerignore</code>.</li>
+        <li><strong>Synced and backed up.</strong> Projects in iCloud-synced Desktop or Documents folders, zip files sent to a colleague, and old backups all carry the file with them.</li>
+        <li><strong>Readable by anything running as you.</strong> Any tool, script or extension running under your user account can open it, without a prompt.</li>
+      </ul>
+
+      <h3>3. Shell history</h3>
+      <p>Typing <code>export STRIPE_KEY=sk_live_…</code> or passing a key as a command argument saves it to <code>~/.zsh_history</code> in plain text. Arguments are also visible to other processes through <code>ps</code> while the command runs.</p>
+
+      <h3>4. Notes apps and chat</h3>
+      <p>Notes, Slack DMs and "send to myself" emails are synced to servers, indexed by search, and kept for years. They feel private, but they're one of the most common places for keys to leak.</p>
+
+      <h2>The better place: the macOS Keychain</h2>
+      <p>Every Mac already ships with a secrets store. The <strong>Keychain</strong> keeps items encrypted on disk and unlocks them with your login. Each item can control which apps may read it, and it can require Touch ID or your password before giving a secret back. Safari passwords and Wi-Fi passwords already live there.</p>
+      <p>You can use it from the terminal today with the built-in <code>security</code> command:</p>
+
+      <div class="code-block">
+        <button class="copy-btn" type="button" data-copy-target="kc-add">Copy</button>
+        <pre><code id="kc-add"><span class="c"># Save a key. -w as the last option prompts for the value,
+# so it never touches your shell history.</span>
+security add-generic-password -a "$USER" -s openai -w</code></pre>
+      </div>
+
+      <div class="code-block">
+        <button class="copy-btn" type="button" data-copy-target="kc-run">Copy</button>
+        <pre><code id="kc-run"><span class="c"># Hand it to one command only, not to your whole shell.</span>
+OPENAI_API_KEY="$(security find-generic-password -a "$USER" -s openai -w)" npm start</code></pre>
+      </div>
+
+      <p>This already fixes the biggest leaks: the key is encrypted at rest, it isn't in a project folder or a dotfile, and only the command you ran receives it. Two things the raw <code>security</code> command won't do for you:</p>
+      <ul>
+        <li><strong>Ask for Touch ID.</strong> Items created this way have no Touch ID requirement, so any script running as you can read them through the same command.</li>
+        <li><strong>Make it pleasant.</strong> There's no list of what you've stored, no way to tell an old key from a new one, and long commands like the one above are easy to get wrong when you're in a hurry. That's how keys end up back in <code>.env</code>.</li>
+      </ul>
+
+      <h2>Doing the same with Keyholdr</h2>
+      <p>I built <a href="../../">Keyholdr</a> because I kept doing the quick, unsafe thing. It's a small native Mac app (menu bar plus a <code>keyholdr</code> command) that stores <strong>each key as its own Keychain item</strong> and asks for <strong>Touch ID every time a secret is read</strong>, whether you copy it in the menu bar or use it in the terminal.</p>
+
+      <div class="code-block">
+        <button class="copy-btn" type="button" data-copy-target="kh-add">Copy</button>
+        <pre><code id="kh-add"><span class="c"># Add a key: the value is read from a hidden prompt, never an argument.</span>
+keyholdr add openai --label work</code></pre>
+      </div>
+
+      <div class="code-block">
+        <button class="copy-btn" type="button" data-copy-target="kh-run">Copy</button>
+        <pre><code id="kh-run"><span class="c"># Run one command with keys injected. Touch ID, then the key
+# exists only inside that process: not in a file, not in history.</span>
+keyholdr run -e OPENAI_API_KEY=openai -e GITHUB_TOKEN=github -- npm start</code></pre>
+      </div>
+
+      <div class="code-block">
+        <button class="copy-btn" type="button" data-copy-target="kh-env">Copy</button>
+        <pre><code id="kh-env"><span class="c"># Or load keys into the current shell session only.</span>
+eval "$(keyholdr env openai anthropic)"</code></pre>
+      </div>
+
+      <p><code>keyholdr env</code> picks conventional names for you (<code>OPENAI_API_KEY</code>, <code>ANTHROPIC_API_KEY</code>, <code>GITHUB_TOKEN</code> and so on). <code>keyholdr list</code> shows every key's age without reading a single secret, and flags old ones so you know what to rotate. There's also a full-screen terminal UI and a ⌃⌥⌘K shortcut that opens the vault from anywhere. Everything stays on your Mac: no account, no sync, no server.</p>
+
+      <h2>How the options compare</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Where</th><th>Encrypted at rest</th><th>Asks before reading</th><th>Seen by every process</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>~/.zshrc</code> export</td><td>No</td><td>No</td><td>Yes</td></tr>
+            <tr><td>Project <code>.env</code></td><td>No</td><td>No</td><td>Any process that opens it</td></tr>
+            <tr><td>Notes app / chat</td><td>Varies</td><td>No</td><td>Synced to servers</td></tr>
+            <tr><td>Keychain via <code>security</code></td><td>Yes</td><td>Only for other apps</td><td>Only the command you run</td></tr>
+            <tr><td>Keychain via Keyholdr</td><td>Yes</td><td>Touch ID on every read</td><td>Only the command you run</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>A five-minute checklist</h2>
+      <ol>
+        <li><strong>Search your dotfiles.</strong> Run <code>grep -nE "KEY|TOKEN|SECRET" ~/.zshrc ~/.zprofile ~/.bash_profile</code> and move anything you find into the Keychain.</li>
+        <li><strong>Check your history.</strong> <code>grep -nE "sk-|ghp_|AKIA" ~/.zsh_history</code> finds the usual suspects. Rotate any key that shows up, then remove the lines.</li>
+        <li><strong>Ignore <code>.env</code> before the first commit.</strong> Commit a <code>.env.example</code> with names only, and add <code>.env</code> to <code>.dockerignore</code> too.</li>
+        <li><strong>Never pass a secret as an argument.</strong> Use a prompt or standard input instead.</li>
+        <li><strong>Rotate anything that was ever committed.</strong> Rewriting history doesn't help once a key has been pushed; revoke it and issue a new one.</li>
+      </ol>
+
+      <div class="cta">
+        <p><strong>Try Keyholdr.</strong> A native API key vault in your menu bar and terminal, under 1 MB, with Touch ID on every read.</p>
+        <div class="cta-links">
+          <a class="button primary" href="https://apps.apple.com/in/app/keyholdr/id6789253781?mt=12" target="_blank" rel="noopener">Mac App Store</a>
+          <a class="button" href="../../docs.html#install">Install with Homebrew</a>
+        </div>
+      </div>
+
+      <p style="margin-top:2rem">Want the backstory? <a href="https://medium.com/@ashwini.sharma0807/i-built-a-tool-because-i-kept-losing-my-api-keys-now-anyone-can-use-it-12fc2fbdf035" target="_blank" rel="noopener">I built a tool because I kept losing my API keys</a> tells how Keyholdr started.</p>
+    </article>
+
+    <footer>
+      <span>© 2026 Ashwini Sharma (Olix Studios)</span>
+      <nav aria-label="Site">
+        <a href="../../">Home</a>
+        <a href="../">Blog</a>
+        <a href="../feed.xml">RSS</a>
+        <a href="../../privacy.html">Privacy</a>
+      </nav>
+    </footer>
+  </main>
+
+  <script src="../blog.js"></script>
+</body>
+</html>
