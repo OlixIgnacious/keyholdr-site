@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Mac API key managers compared (2026): Keyholdr, NoxKey, Fidelius, EnvVault and more | Keyholdr</title>
-  <meta name="description" content="API key managers for macOS compared for 2026: Keyholdr, NoxKey, Fidelius, EnvVault, Keyring Vault, Secret Store, 1Password CLI and the built-in security command. Price, terminal support, per-command key injection, Touch ID, sync and .env handling.">
+  <title>Mac API key managers compared (2026): Keyholdr, Fidelius, EnvVault, 1Password CLI and more | Keyholdr</title>
+  <meta name="description" content="API key managers for macOS compared for 2026: Keyholdr, Fidelius, EnvVault, Keyring Vault, Secret Store, 1Password CLI and the built-in security command. Price, terminal support, per-command key injection, Touch ID, sync and .env handling.">
   <meta name="author" content="Ashwini Sharma">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://keyholdr.dev/blog/mac-api-key-managers-compared/">
@@ -25,7 +25,7 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://keyholdr.dev/blog/mac-api-key-managers-compared/">
   <meta property="og:title" content="Mac API key managers compared (2026)">
-  <meta property="og:description" content="Keyholdr, NoxKey, Fidelius, EnvVault, Keyring Vault, Secret Store, 1Password CLI and the built-in security command, side by side.">
+  <meta property="og:description" content="Keyholdr, Fidelius, EnvVault, Keyring Vault, Secret Store, 1Password CLI and the built-in security command, side by side.">
   <meta property="og:image" content="https://keyholdr.dev/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -35,7 +35,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mac API key managers compared (2026)">
-  <meta name="twitter:description" content="Keyholdr, NoxKey, Fidelius, EnvVault, Keyring Vault, Secret Store, 1Password CLI and the built-in security command, side by side.">
+  <meta name="twitter:description" content="Keyholdr, Fidelius, EnvVault, Keyring Vault, Secret Store, 1Password CLI and the built-in security command, side by side.">
   <meta name="twitter:image" content="https://keyholdr.dev/og-image.png">
 
   <script type="application/ld+json">
@@ -44,7 +44,7 @@
     "@graph": [
       {
         "@type": "BlogPosting",
-        "headline": "Mac API key managers compared (2026): Keyholdr, NoxKey, Fidelius, EnvVault and more",
+        "headline": "Mac API key managers compared (2026): Keyholdr, Fidelius, EnvVault, 1Password CLI and more",
         "description": "An honest comparison of API key managers for macOS in 2026: price, terminal support, Touch ID, sync and .env handling.",
         "datePublished": "2026-11-24",
         "dateModified": "2026-11-25",
@@ -54,7 +54,6 @@
         "mainEntityOfPage": "https://keyholdr.dev/blog/mac-api-key-managers-compared/",
         "about": [
           { "@type": "SoftwareApplication", "name": "Keyholdr", "operatingSystem": "macOS", "applicationCategory": "DeveloperApplication", "url": "https://keyholdr.dev/" },
-          { "@type": "SoftwareApplication", "name": "NoxKey", "operatingSystem": "macOS", "url": "https://noxkey-website.pages.dev/" },
           { "@type": "SoftwareApplication", "name": "Fidelius", "operatingSystem": "macOS", "url": "https://setapp.com/apps/fidelius" },
           { "@type": "SoftwareApplication", "name": "EnvVault", "operatingSystem": "macOS", "url": "https://apps.apple.com/app/id6790103470" },
           { "@type": "SoftwareApplication", "name": "Keyring Vault", "operatingSystem": "macOS", "url": "https://apps.apple.com/us/app/id6763159451" },
@@ -93,12 +92,12 @@
   <main>
     <article>
       <p class="eyebrow"><a href="../">Blog</a> · Comparison</p>
-      <h1>Mac API key managers compared (2026): Keyholdr, NoxKey, Fidelius, EnvVault and more</h1>
+      <h1>Mac API key managers compared (2026): Keyholdr, Fidelius, EnvVault, 1Password CLI and more</h1>
       <p class="lede">There are now half a dozen small Mac apps that keep API keys in the macOS Keychain instead of <code>.env</code> files. They look alike in screenshots but differ in the things that matter day to day: whether they work in the terminal, whether a key reaches only the command that needs it, how often they ask for Touch ID, and whether your keys leave the Mac.</p>
       <p class="byline">Ashwini Sharma · <time datetime="2026-11-24">24 November 2026</time> · updated <time datetime="2026-11-25">25 November 2026</time> · 9 min read</p>
 
       <div class="answer">
-        <p><strong>Short answer:</strong> for most developers who want their keys in both the menu bar and the terminal, <strong>Keyholdr</strong> is the simplest fit: it's free, runs on macOS 13 and later, asks for Touch ID on <em>every</em> read, and <code>keyholdr run</code> hands a key to one command instead of your whole shell. Pick <strong>Fidelius</strong> if you need per-project values synced to several Macs, <strong>Secret Store</strong> for keys on your iPhone too, <strong>EnvVault</strong> if your workflow still revolves around <code>.env</code> files, <strong>NoxKey</strong> if detecting AI coding agents matters most to you, and the <strong>1Password CLI</strong> if your team already pays for 1Password.</p>
+        <p><strong>Short answer:</strong> for most developers who want their keys in both the menu bar and the terminal, <strong>Keyholdr</strong> is the simplest fit: it's free, runs on macOS 13 and later, asks for Touch ID on <em>every</em> read, and <code>keyholdr run</code> hands a key to one command instead of your whole shell. Pick <strong>Fidelius</strong> if you need per-project values synced to several Macs, <strong>Secret Store</strong> for keys on your iPhone too, <strong>EnvVault</strong> if your workflow still revolves around <code>.env</code> files, and the <strong>1Password CLI</strong> if your team already pays for 1Password.</p>
       </div>
 
       <p style="margin-top:1.5rem"><strong>A note on bias:</strong> I make Keyholdr, so read this with that in mind. Every fact about another app below comes from that app's own website or store listing as of November 2026, and each one is linked. Where a listing doesn't say something, the table says "not stated" rather than guessing. If you make one of these apps and something is wrong or out of date, <a href="mailto:ashwini.sharma0807@gmail.com">email me</a> and I'll fix it.</p>
@@ -111,7 +110,6 @@
           </thead>
           <tbody>
             <tr><td><strong>Keyholdr</strong></td><td>Free</td><td>Yes: <code>run</code>, <code>env</code>, <code>get</code>, full-screen UI; works without the app open</td><td>Yes: <code>keyholdr run</code></td><td>Every read, always</td><td>No sync; passphrase-encrypted export file</td><td>No</td><td>13+</td></tr>
-            <tr><td><strong>NoxKey</strong></td><td>Free, open source</td><td>Yes: <code>noxkey get</code>, MCP server; needs the menu bar app running</td><td>Not documented (keys load into the shell)</td><td>Every read by default; optional silent unlock for a session</td><td>No sync; no export documented</td><td>Yes</td><td>14+</td></tr>
             <tr><td><strong>Fidelius</strong></td><td>From $24, or Setapp</td><td>Yes: <code>accio</code></td><td>Yes: <code>accio &lt;project&gt; &lt;command&gt;</code></td><td>To reveal or copy</td><td>Optional iCloud Keychain; encrypted backups</td><td>Yes (and export)</td><td>15+</td></tr>
             <tr><td><strong>EnvVault</strong></td><td>$5.99</td><td>Not stated</td><td>Not stated</td><td>Not stated</td><td>Optional encrypted iCloud</td><td>Yes (and export)</td><td>14+</td></tr>
             <tr><td><strong>Keyring Vault</strong></td><td>$4.99</td><td>Not in the app</td><td>No terminal tool</td><td>When opening the vault</td><td>None stated (offline)</td><td>Not stated</td><td>15+</td></tr>
@@ -138,9 +136,6 @@
       </ul>
       <p><strong>Trade-offs:</strong> no sync between Macs (deliberately), no <code>.env</code> import, no clipboard auto-clear yet, and keys are grouped by platform, label and tag rather than by project. The Mac App Store version's sandbox limits the CLI, so terminal users should install from Homebrew or the direct download.</p>
 
-      <h2>NoxKey</h2>
-      <p><a href="https://noxkey-website.pages.dev/" target="_blank" rel="noopener">NoxKey</a> is a free, open-source menu bar app with a CLI. Its focus is <strong>AI coding agents</strong>: it walks the process tree to tell whether a tool such as Claude, Cursor or Codex is asking for a secret, and blocks bulk-export commands for those callers. It imports <code>.env</code> files and ships an MCP server.</p>
-      <p><strong>Trade-offs:</strong> its documented way to use a key in the terminal is to load it into the current shell (<code>eval "$(noxkey get …)"</code> or a sourced script), so everything started from that shell afterwards inherits it; neither its site nor its write-up documents a way to hand a key to a single command. Its "easy" level unlocks a secret once and then "silently for the rest of your coding session". The CLI talks to the menu bar app, so the app has to be running. Neither page documents an export or backup, and it needs macOS 14.</p>
 
       <h2>Fidelius</h2>
       <p><a href="https://setapp.com/apps/fidelius" target="_blank" rel="noopener">Fidelius</a> organizes keys <strong>by project</strong>, so <code>DATABASE_URL</code> can have a different value in each one. Its <code>accio</code> command runs a project's command with that project's keys injected, for example <code>accio my-app npm run dev</code>, and masks key values that show up in AI tools' output. It imports and exports <code>.env</code> files, keeps a Recently Deleted list, and clears copied values after 60 seconds.</p>
@@ -168,11 +163,11 @@
 
       <h2>How to choose</h2>
       <ol>
-        <li><strong>Do you need keys in the terminal?</strong> If so, choose a tool with a real CLI: Keyholdr, Fidelius, NoxKey or 1Password CLI. Of those, Keyholdr, Fidelius and 1Password can hand a key to a single command.</li>
-        <li><strong>Should keys ever leave this Mac?</strong> If not, choose Keyholdr, NoxKey or Keyring Vault. If you want them on several devices, choose Fidelius or Secret Store (iCloud Keychain), EnvVault (iCloud) or 1Password.</li>
-        <li><strong>Do you want a prompt on every single read?</strong> Keyholdr always asks. NoxKey asks by default but has a session mode, and 1Password unlocks for a session.</li>
-        <li><strong>Do AI agents run commands for you?</strong> With Keyholdr, every read an agent makes triggers a Touch ID prompt you can decline, and <code>keyholdr run</code> keeps the key out of the shell the agent works in. NoxKey adds process-tree detection of known agents on top of its prompts.</li>
-        <li><strong>Which macOS are you on?</strong> Of the menu bar apps here, only Keyholdr runs on macOS 13 Ventura. NoxKey, EnvVault and Secret Store need macOS 14; Fidelius and Keyring Vault need macOS 15.</li>
+        <li><strong>Do you need keys in the terminal?</strong> If so, choose a tool with a real CLI: Keyholdr, Fidelius or the 1Password CLI. All three can hand a key to a single command.</li>
+        <li><strong>Should keys ever leave this Mac?</strong> If not, choose Keyholdr or Keyring Vault. If you want them on several devices, choose Fidelius or Secret Store (iCloud Keychain), EnvVault (iCloud) or 1Password.</li>
+        <li><strong>Do you want a prompt on every single read?</strong> Keyholdr always asks; the 1Password CLI unlocks for a session.</li>
+        <li><strong>Do AI agents run commands for you?</strong> With Keyholdr, every read an agent makes triggers a Touch ID prompt you can decline, and <code>keyholdr run</code> keeps the key out of the shell the agent works in.</li>
+        <li><strong>Which macOS are you on?</strong> Of the menu bar apps here, only Keyholdr runs on macOS 13 Ventura. EnvVault and Secret Store need macOS 14; Fidelius and Keyring Vault need macOS 15.</li>
       </ol>
 
       <div class="cta">
