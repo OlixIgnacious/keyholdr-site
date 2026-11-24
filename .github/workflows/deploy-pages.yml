@@ -37,6 +37,7 @@ jobs:
         run: |
           V="${GITHUB_SHA::8}"
           sed -i "s|\"index.css\"|\"index.css?v=$V\"|g; s|\"index.js\"|\"index.js?v=$V\"|g" index.html docs.html privacy.html
+          find blog -name '*.html' -exec sed -i "s|blog\.css\"|blog.css?v=$V\"|g; s|blog\.js\"|blog.js?v=$V\"|g" {} +
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
