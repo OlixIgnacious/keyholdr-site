@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Mac API key managers compared (2026): Keyholdr, NoxKey, Fidelius, EnvVault and more | Keyholdr</title>
+  <meta name="description" content="An honest comparison of API key managers for macOS in 2026: Keyholdr, NoxKey, Fidelius, EnvVault, Keyring Vault, Secret Store, 1Password CLI and the built-in security command. Price, terminal support, Touch ID, sync and .env handling.">
+  <meta name="author" content="Ashwini Sharma">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://olixignacious.github.io/keyholdr-site/blog/mac-api-key-managers-compared/">
+  <link rel="alternate" type="application/rss+xml" title="Keyholdr blog" href="https://olixignacious.github.io/keyholdr-site/blog/feed.xml">
+  <meta name="theme-color" content="#f4f3ef">
+
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="../../favicon-48.png">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../blog.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Keyholdr">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://olixignacious.github.io/keyholdr-site/blog/mac-api-key-managers-compared/">
+  <meta property="og:title" content="Mac API key managers compared (2026)">
+  <meta property="og:description" content="Keyholdr, NoxKey, Fidelius, EnvVault, Keyring Vault, Secret Store, 1Password CLI and the built-in security command, side by side.">
+  <meta property="og:image" content="https://olixignacious.github.io/keyholdr-site/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Keyholdr: a native API key manager in the macOS menu bar.">
+  <meta property="article:published_time" content="2026-11-24">
+  <meta property="article:author" content="Ashwini Sharma">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mac API key managers compared (2026)">
+  <meta name="twitter:description" content="Keyholdr, NoxKey, Fidelius, EnvVault, Keyring Vault, Secret Store, 1Password CLI and the built-in security command, side by side.">
+  <meta name="twitter:image" content="https://olixignacious.github.io/keyholdr-site/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "Mac API key managers compared (2026): Keyholdr, NoxKey, Fidelius, EnvVault and more",
+        "description": "An honest comparison of API key managers for macOS in 2026: price, terminal support, Touch ID, sync and .env handling.",
+        "datePublished": "2026-11-24",
+        "dateModified": "2026-11-24",
+        "author": { "@type": "Person", "name": "Ashwini Sharma", "url": "https://medium.com/@ashwini.sharma0807" },
+        "publisher": { "@type": "Organization", "name": "Olix Studios", "logo": { "@type": "ImageObject", "url": "https://olixignacious.github.io/keyholdr-site/apple-touch-icon.png" } },
+        "image": "https://olixignacious.github.io/keyholdr-site/og-image.png",
+        "mainEntityOfPage": "https://olixignacious.github.io/keyholdr-site/blog/mac-api-key-managers-compared/",
+        "about": [
+          { "@type": "SoftwareApplication", "name": "Keyholdr", "operatingSystem": "macOS", "applicationCategory": "DeveloperApplication", "url": "https://olixignacious.github.io/keyholdr-site/" },
+          { "@type": "SoftwareApplication", "name": "NoxKey", "operatingSystem": "macOS", "url": "https://noxkey-website.pages.dev/" },
+          { "@type": "SoftwareApplication", "name": "Fidelius", "operatingSystem": "macOS", "url": "https://setapp.com/apps/fidelius" },
+          { "@type": "SoftwareApplication", "name": "EnvVault", "operatingSystem": "macOS", "url": "https://apps.apple.com/app/id6790103470" },
+          { "@type": "SoftwareApplication", "name": "Keyring Vault", "operatingSystem": "macOS", "url": "https://apps.apple.com/us/app/id6763159451" },
+          { "@type": "SoftwareApplication", "name": "Secret Store", "operatingSystem": "macOS, iOS, iPadOS", "url": "https://apps.apple.com/app/id6779826009" },
+          { "@type": "SoftwareApplication", "name": "1Password CLI", "url": "https://developer.1password.com/docs/cli/" }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Keyholdr", "item": "https://olixignacious.github.io/keyholdr-site/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://olixignacious.github.io/keyholdr-site/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Mac API key managers compared", "item": "https://olixignacious.github.io/keyholdr-site/blog/mac-api-key-managers-compared/" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../../">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9" cy="9" r="4.25"/>
+        <path d="M12 12l7.5 7.5M16.5 16.5l2-2M19 19l2-2"/>
+      </svg>
+      <span>Keyholdr</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../../docs.html">Docs</a>
+      <a href="../" aria-current="page">Blog</a>
+      <a href="../../support.html">Support</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <p class="eyebrow"><a href="../">Blog</a> · Comparison</p>
+      <h1>Mac API key managers compared (2026): Keyholdr, NoxKey, Fidelius, EnvVault and more</h1>
+      <p class="lede">There are now half a dozen small Mac apps that keep API keys in the macOS Keychain instead of <code>.env</code> files. They look alike in screenshots but differ in the things that matter day to day: whether they work in the terminal, how often they ask for Touch ID, and whether your keys leave the Mac.</p>
+      <p class="byline">Ashwini Sharma · <time datetime="2026-11-24">24 November 2026</time> · 8 min read</p>
+
+      <div class="answer">
+        <p><strong>Short answer:</strong> if you mostly need keys <strong>in the terminal</strong>, pick a tool with a real CLI: <strong>Keyholdr</strong> (free, Touch ID on every read, macOS 13+), <strong>NoxKey</strong> (free, open source, detects AI coding agents) or <strong>Fidelius</strong> (paid, per-project keys, optional iCloud sync). If you want <strong>keys on your iPhone too</strong>, use <strong>Secret Store</strong>. If you manage <strong>.env files across environments</strong>, look at <strong>EnvVault</strong>. If your team already pays for <strong>1Password</strong>, its CLI does the job.</p>
+      </div>
+
+      <p style="margin-top:1.5rem"><strong>A note on bias:</strong> I make Keyholdr, so read this with that in mind. Every fact about another app below comes from that app's own website or store listing as of 24 November 2026, and each one is linked. Where a listing doesn't say something, the table says "not stated" rather than guessing. If you make one of these apps and something is wrong or out of date, <a href="mailto:ashwini.sharma0807@gmail.com">email me</a> and I'll fix it.</p>
+
+      <h2>At a glance</h2>
+      <div class="table-wrap">
+        <table style="min-width:820px">
+          <thead>
+            <tr><th>App</th><th>Price</th><th>Terminal</th><th>Touch ID</th><th>Sync</th><th>.env import</th><th>macOS</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Keyholdr</strong></td><td>Free</td><td>Yes: <code>run</code>, <code>env</code>, <code>get</code>, full-screen UI</td><td>Every read</td><td>None (encrypted export file)</td><td>No</td><td>13+</td></tr>
+            <tr><td><strong>NoxKey</strong></td><td>Free, open source</td><td>Yes: <code>noxkey get</code>, MCP server</td><td>Every read by default; optional session unlock</td><td>None</td><td>Yes</td><td>14+</td></tr>
+            <tr><td><strong>Fidelius</strong></td><td>From $24, or Setapp</td><td>Yes: <code>accio</code></td><td>To reveal or copy</td><td>Optional, via iCloud Keychain</td><td>Yes (and export)</td><td>15+</td></tr>
+            <tr><td><strong>EnvVault</strong></td><td>$5.99</td><td>Not stated</td><td>Not stated</td><td>Optional encrypted iCloud</td><td>Yes (and export)</td><td>14+</td></tr>
+            <tr><td><strong>Keyring Vault</strong></td><td>$4.99</td><td>Not in the app</td><td>When opening the vault</td><td>None (offline)</td><td>Not stated</td><td>15+</td></tr>
+            <tr><td><strong>Secret Store</strong></td><td>Free</td><td>Not stated</td><td>Touch ID or Face ID</td><td>iCloud Keychain (Mac, iPhone, iPad)</td><td>Not stated</td><td>14.6+</td></tr>
+            <tr><td><strong>1Password CLI</strong></td><td>1Password subscription</td><td>Yes: <code>op run</code>, <code>op read</code></td><td>Unlocks the CLI for a session</td><td>1Password account</td><td>Uses <code>op://</code> references in an env file</td><td>Cross-platform</td></tr>
+            <tr><td><strong><code>security</code> command</strong></td><td>Built in</td><td>Yes</td><td>No, by default</td><td>None</td><td>No</td><td>Any</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Keyholdr</h2>
+      <p><a href="../../">Keyholdr</a> is a menu bar app plus a <code>keyholdr</code> command that share one vault. Each key is its own macOS Keychain item, and every read asks for Touch ID, Apple Watch or your password, whether you copy it from the menu bar or use it in a script. <code>keyholdr run -e OPENAI_API_KEY=openai -- npm start</code> hands a key to one command only, <code>keyholdr env</code> loads keys into the current shell, and bare <code>keyholdr</code> opens a full-screen terminal UI. The app is about 700 KB of SwiftUI, opens with ⌃⌥⌘K from anywhere, and makes no network connections. <code>keyholdr list</code> shows each key's age and flags anything older than six months for rotation.</p>
+      <p><strong>Best for:</strong> developers on any Mac from macOS 13 who want one fast, free tool for both the menu bar and the terminal, and want a Touch ID prompt on every single read.</p>
+
+      <h2>NoxKey</h2>
+      <p><a href="https://noxkey-website.pages.dev/" target="_blank" rel="noopener">NoxKey</a> is a free, open-source menu bar app with a CLI that talks to the app over a local socket. Its standout feature is <strong>AI agent detection</strong>: it walks the process tree to tell whether Claude, Cursor, Codex or a similar tool is asking for a secret, and blocks bulk-export commands for those callers. Each secret can be set to ask on every read (the default), unlock once per coding session, or always prompt. It imports <code>.env</code> files and ships an MCP server. It needs macOS 14 and a Mac with Touch ID.</p>
+      <p><strong>Best for:</strong> people who let AI coding agents run commands and want guardrails specifically around that.</p>
+
+      <h2>Fidelius</h2>
+      <p><a href="https://setapp.com/apps/fidelius" target="_blank" rel="noopener">Fidelius</a> organizes keys <strong>by project</strong>, so <code>DATABASE_URL</code> can have a different value in each one. Its <code>accio</code> command runs a project's command with that project's keys injected, for example <code>accio my-app npm run dev</code>, and masks key values that show up in AI tools' output. Keys are Keychain items, so turning on iCloud Keychain syncs them to your other Macs. It imports and exports <code>.env</code> files, keeps a Recently Deleted list, and clears copied values after 60 seconds. It costs from $24 or comes with Setapp, and needs macOS 15.</p>
+      <p><strong>Best for:</strong> developers juggling many projects that reuse the same variable names, who want keys on more than one Mac.</p>
+
+      <h2>EnvVault</h2>
+      <p><a href="https://apps.apple.com/app/id6790103470" target="_blank" rel="noopener">EnvVault</a> is built around <code>.env</code> files. It imports <code>.env</code>, <code>.env.local</code>, <code>.env.dev</code> and <code>.env.production</code>, separates local, dev, staging and production environments, asks for confirmation on production values, and warns when an exported file isn't covered by <code>.gitignore</code>. It has a rotation and expiry dashboard and optional encrypted iCloud sync. Its listing doesn't mention a command-line tool or Touch ID. $5.99, macOS 14+.</p>
+      <p><strong>Best for:</strong> teams whose workflow still runs on <code>.env</code> files and who want those files managed rather than replaced.</p>
+
+      <h2>Keyring Vault</h2>
+      <p><a href="https://apps.apple.com/us/app/id6763159451" target="_blank" rel="noopener">Keyring Vault</a> is a focused menu bar app: search, click to copy, keys grouped by project, Touch ID or your password when you open the vault, and the clipboard cleared after 30 seconds. It works fully offline. It can import from a separate <code>tokenvault</code> CLI but doesn't include a terminal tool of its own. $4.99, macOS 15+.</p>
+      <p><strong>Best for:</strong> people who only ever copy and paste keys and want the simplest possible menu bar app.</p>
+
+      <h2>Secret Store</h2>
+      <p><a href="https://apps.apple.com/app/id6779826009" target="_blank" rel="noopener">Secret Store</a> is free and runs on Mac, iPhone and iPad. It stores nothing itself: every secret is an iCloud Keychain item, so it syncs across your Apple devices with Apple's end-to-end encryption. It has no network access of its own, keeps copied values off Universal Clipboard, clears them after 90 seconds, and backs up to a passphrase-encrypted archive. Its listing doesn't mention a command-line tool. macOS 14.6+.</p>
+      <p><strong>Best for:</strong> anyone who needs the same keys on their phone and laptop.</p>
+
+      <h2>1Password CLI</h2>
+      <p>If you already use 1Password, the <a href="https://developer.1password.com/docs/cli/" target="_blank" rel="noopener">1Password CLI</a> is the obvious choice. You put <code>op://vault/item/field</code> references in an env file and <code>op run</code> resolves them when the command starts, so the file itself holds no secrets and can be committed. Touch ID unlocks the CLI through the desktop app for a session. Keys sync to every device and teammate through your 1Password account. The trade-offs are a subscription and a much larger app.</p>
+      <p><strong>Best for:</strong> teams that already pay for 1Password or need to share keys.</p>
+
+      <h2>The built-in <code>security</code> command</h2>
+      <p>Every Mac can already do the basics with no download: <code>security add-generic-password -a "$USER" -s openai -w</code> saves a key, and <code>security find-generic-password -a "$USER" -s openai -w</code> reads it back. Items created this way don't ask for Touch ID, though, so any script running as you can read them, and there is no list or UI. My <a href="../where-to-store-api-keys-on-a-mac/">guide to storing API keys on a Mac</a> covers this approach in detail.</p>
+      <p><strong>Best for:</strong> a handful of keys and a strong preference for nothing extra installed.</p>
+
+      <h2>Where Keyholdr falls short</h2>
+      <p>An honest comparison needs this section. Keyholdr does <strong>not</strong> currently:</p>
+      <ul>
+        <li><strong>Clear the clipboard</strong> after you copy a key. Keyring Vault, EnvVault, Fidelius and Secret Store all do.</li>
+        <li><strong>Import <code>.env</code> files.</strong> It can print <code>.env</code>-style lines (<code>keyholdr env --dotenv</code>), but you add keys one at a time.</li>
+        <li><strong>Sync between Macs.</strong> That's deliberate, but moving to a new Mac means exporting a passphrase-encrypted file (PBKDF2-SHA256 with 600,000 rounds, then AES-256-GCM) and importing it.</li>
+        <li><strong>Group keys by project or environment.</strong> Keys have a platform, a label and tags, not per-project values like Fidelius or environments like EnvVault.</li>
+        <li><strong>Detect AI agents.</strong> An MCP bridge lets Claude and similar tools request a key, and every request still asks for Touch ID, but nothing tells an agent apart from you the way NoxKey does.</li>
+        <li><strong>Run the CLI from the App Store version.</strong> The sandbox limits it, so terminal users should install from Homebrew or the direct download.</li>
+      </ul>
+
+      <h2>How to choose</h2>
+      <ol>
+        <li><strong>Do you need keys in the terminal?</strong> If not, any menu bar app here works; pick by price and macOS version. If so, choose Keyholdr, NoxKey, Fidelius or 1Password CLI.</li>
+        <li><strong>Should keys leave this Mac?</strong> For keys on several devices, choose Secret Store, Fidelius (iCloud Keychain), EnvVault (iCloud) or 1Password. For keys that never leave the machine, choose Keyholdr, NoxKey or Keyring Vault.</li>
+        <li><strong>Do AI agents run commands for you?</strong> NoxKey has the most specific protection. With Keyholdr, every read by an agent triggers a Touch ID prompt you can decline.</li>
+        <li><strong>Which macOS are you on?</strong> Of the menu bar apps here, only Keyholdr runs on macOS 13 Ventura. NoxKey, EnvVault and Secret Store need macOS 14; Fidelius and Keyring Vault need macOS 15.</li>
+      </ol>
+
+      <div class="cta">
+        <p><strong>Try Keyholdr.</strong> Free, under 1 MB, with Touch ID on every read, in your menu bar and your terminal.</p>
+        <div class="cta-links">
+          <a class="button primary" href="https://apps.apple.com/in/app/keyholdr/id6789253781?mt=12" target="_blank" rel="noopener">Mac App Store</a>
+          <a class="button" href="../../docs.html#install">Install with Homebrew</a>
+        </div>
+      </div>
+    </article>
+
+    <footer>
+      <span>© 2026 Ashwini Sharma (Olix Studios)</span>
+      <nav aria-label="Site">
+        <a href="../../">Home</a>
+        <a href="../">Blog</a>
+        <a href="../feed.xml">RSS</a>
+        <a href="../../privacy.html">Privacy</a>
+      </nav>
+    </footer>
+  </main>
+
+  <script src="../blog.js"></script>
+</body>
+</html>

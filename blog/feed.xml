@@ -6,7 +6,14 @@
     <atom:link href="https://olixignacious.github.io/keyholdr-site/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical guides to storing, loading and rotating API keys on a Mac.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 22 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Mac API key managers compared (2026): Keyholdr, NoxKey, Fidelius, EnvVault and more</title>
+      <link>https://olixignacious.github.io/keyholdr-site/blog/mac-api-key-managers-compared/</link>
+      <guid isPermaLink="true">https://olixignacious.github.io/keyholdr-site/blog/mac-api-key-managers-compared/</guid>
+      <pubDate>Tue, 24 Nov 2026 12:00:00 GMT</pubDate>
+      <description>Price, terminal support, Touch ID, sync and .env handling for eight ways to keep API keys on a Mac, including where Keyholdr falls short.</description>
+    </item>
     <item>
       <title>Where to store API keys on a Mac (and why .env files leak)</title>
       <link>https://olixignacious.github.io/keyholdr-site/blog/where-to-store-api-keys-on-a-mac/</link>

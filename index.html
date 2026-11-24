@@ -86,6 +86,84 @@
           "name": "Olix Studios",
           "url": "https://github.com/OlixIgnacious"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://olixignacious.github.io/keyholdr-site/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Keyholdr?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Keyholdr is a free, native macOS app for storing API keys. It lives in the menu bar, keeps each secret as its own item in the macOS Keychain, and asks for Touch ID before any key is copied or read. A keyholdr command-line tool and full-screen terminal UI use the same vault. It runs on macOS 13 Ventura or later and is under 1 MB."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where should I store API keys on a Mac?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In the macOS Keychain, not in ~/.zshrc, a .env file or a notes app. The Keychain encrypts items on disk and can require Touch ID before releasing one. Then pass a key only to the command that needs it, for example keyholdr run -e OPENAI_API_KEY=openai -- npm start. The full guide covers each option."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is Keyholdr different from a .env file?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A .env file is plain text that any program running as you can read, and it is easy to commit, copy into a Docker image or sync by accident. With Keyholdr the secret stays encrypted in the Keychain and is handed only to the command you run, after Touch ID. If a tool insists on a .env file, keyholdr env --dotenv prints one on demand."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Keyholdr ask for Touch ID every time?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Every copy, every reveal and every terminal read asks for Touch ID. Macs without Touch ID use Apple Watch or your login password instead. The popover locks again as soon as you click away."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Keyholdr sync my keys to iCloud?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Keyholdr makes no network connections, and keys are never sent to iCloud or any server. To move to a new Mac, export the vault to one passphrase-encrypted file (PBKDF2-SHA256, then AES-256-GCM) and import it there."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use my keys from the terminal?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. keyholdr run injects keys into one command as environment variables, keyholdr env loads them into the current shell, keyholdr get prints one, and bare keyholdr opens a full-screen terminal UI. The Mac App Store version is sandboxed, so for the terminal install the Homebrew build: brew install --cask olixignacious/tap/keyholdr. See the CLI reference."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can AI coding assistants use my keys?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, through a small MCP bridge that calls the keyholdr command for Claude Desktop, Claude Code and other MCP clients. Every request still shows a Touch ID prompt on your Mac, and nothing gets pasted into a config file or a chat."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does Keyholdr compare with other API key managers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Keyholdr is free, works in both the menu bar and the terminal, asks for Touch ID on every read and runs on macOS 13. It doesn't sync between Macs, import .env files or clear the clipboard. The comparison with NoxKey, Fidelius, EnvVault, 1Password CLI and others covers which one fits which workflow."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Keyholdr free? Is it open source?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Keyholdr is free, with no account. Its source code is public on GitHub under a non-commercial licence: you can read, build and modify it for personal use, but it is not an OSI open-source licence."
+            }
+          }
+        ]
       }
     ]
   }
@@ -364,6 +442,55 @@
       </div>
     </section>
 
+    <!-- ============ 04 FAQ ============ -->
+    <!-- Keep the answers in step with the FAQPage JSON-LD in <head>. -->
+    <section class="section" id="faq" data-section-theme="light">
+      <header class="section-head">
+        <span class="index reveal">04</span>
+        <h2 class="reveal">Questions,<br><em>answered.</em></h2>
+      </header>
+      <div class="section-body">
+        <div class="faq">
+          <details class="faq-item reveal" open>
+            <summary><h3>What is Keyholdr?</h3><span class="faq-mark" aria-hidden="true"></span></summary>
+            <p>Keyholdr is a free, native macOS app for storing API keys. It lives in the menu bar, keeps each secret as its own item in the macOS Keychain, and asks for Touch ID before any key is copied or read. A <code>keyholdr</code> command-line tool and full-screen terminal UI use the same vault. It runs on macOS 13 Ventura or later and is under 1&nbsp;MB.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><h3>Where should I store API keys on a Mac?</h3><span class="faq-mark" aria-hidden="true"></span></summary>
+            <p>In the macOS Keychain, not in <code>~/.zshrc</code>, a <code>.env</code> file or a notes app. The Keychain encrypts items on disk and can require Touch ID before releasing one. Then pass a key only to the command that needs it, for example <code>keyholdr run -e OPENAI_API_KEY=openai -- npm start</code>. The <a href="blog/where-to-store-api-keys-on-a-mac/">full guide</a> covers each option.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><h3>How is Keyholdr different from a .env file?</h3><span class="faq-mark" aria-hidden="true"></span></summary>
+            <p>A <code>.env</code> file is plain text that any program running as you can read, and it is easy to commit, copy into a Docker image or sync by accident. With Keyholdr the secret stays encrypted in the Keychain and is handed only to the command you run, after Touch ID. If a tool insists on a <code>.env</code> file, <code>keyholdr env --dotenv</code> prints one on demand.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><h3>Does Keyholdr ask for Touch ID every time?</h3><span class="faq-mark" aria-hidden="true"></span></summary>
+            <p>Yes. Every copy, every reveal and every terminal read asks for Touch ID. Macs without Touch ID use Apple Watch or your login password instead. The popover locks again as soon as you click away.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><h3>Does Keyholdr sync my keys to iCloud?</h3><span class="faq-mark" aria-hidden="true"></span></summary>
+            <p>No. Keyholdr makes no network connections, and keys are never sent to iCloud or any server. To move to a new Mac, export the vault to one passphrase-encrypted file (PBKDF2-SHA256, then AES-256-GCM) and import it there.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><h3>Can I use my keys from the terminal?</h3><span class="faq-mark" aria-hidden="true"></span></summary>
+            <p>Yes. <code>keyholdr run</code> injects keys into one command as environment variables, <code>keyholdr env</code> loads them into the current shell, <code>keyholdr get</code> prints one, and bare <code>keyholdr</code> opens a full-screen terminal UI. The Mac App Store version is sandboxed, so for the terminal install the Homebrew build: <code>brew install --cask olixignacious/tap/keyholdr</code>. See the <a href="docs.html#cli">CLI reference</a>.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><h3>Can AI coding assistants use my keys?</h3><span class="faq-mark" aria-hidden="true"></span></summary>
+            <p>Yes, through a small <a href="docs.html#mcp">MCP bridge</a> that calls the <code>keyholdr</code> command for Claude Desktop, Claude Code and other MCP clients. Every request still shows a Touch ID prompt on your Mac, and nothing gets pasted into a config file or a chat.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><h3>How does Keyholdr compare with other API key managers?</h3><span class="faq-mark" aria-hidden="true"></span></summary>
+            <p>Keyholdr is free, works in both the menu bar and the terminal, asks for Touch ID on every read and runs on macOS 13. It doesn't sync between Macs, import <code>.env</code> files or clear the clipboard. The <a href="blog/mac-api-key-managers-compared/">comparison with NoxKey, Fidelius, EnvVault, 1Password CLI and others</a> covers which one fits which workflow.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><h3>Is Keyholdr free? Is it open source?</h3><span class="faq-mark" aria-hidden="true"></span></summary>
+            <p>Keyholdr is free, with no account. Its source code is public on <a href="https://github.com/OlixIgnacious/keyholdr" target="_blank" rel="noopener">GitHub</a> under a non-commercial licence: you can read, build and modify it for personal use, but it is not an OSI open-source licence.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ Download CTA ============ -->
     <section class="cta" id="download" data-section-theme="light">
       <h2 class="cta-title">
@@ -410,6 +537,7 @@
         <a href="#product">Product</a>
         <a href="#security">Security</a>
         <a href="#specs">Specs</a>
+        <a href="#faq">FAQ</a>
         <a href="docs.html">Docs</a>
         <a href="blog/">Blog</a>
         <a href="privacy.html">Privacy</a>
