@@ -5,7 +5,7 @@ keys. macOS is on the [Mac App Store](https://apps.apple.com/in/app/keyholdr/id6
 [Keyholdr for Windows](https://github.com/OlixIgnacious/keyholdr-windows) is
 source-available.
 
-Deployed via GitHub Pages: https://olixignacious.github.io/keyholdr-site/
+Deployed via GitHub Pages: https://keyholdr.dev/
 
 ## Local preview
 

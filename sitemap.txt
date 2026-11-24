@@ -1,6 +1,6 @@
-https://olixignacious.github.io/keyholdr-site/
-https://olixignacious.github.io/keyholdr-site/docs.html
-https://olixignacious.github.io/keyholdr-site/support.html
-https://olixignacious.github.io/keyholdr-site/blog/
-https://olixignacious.github.io/keyholdr-site/blog/where-to-store-api-keys-on-a-mac/
-https://olixignacious.github.io/keyholdr-site/blog/mac-api-key-managers-compared/
+https://keyholdr.dev/
+https://keyholdr.dev/docs.html
+https://keyholdr.dev/support.html
+https://keyholdr.dev/blog/
+https://keyholdr.dev/blog/where-to-store-api-keys-on-a-mac/
+https://keyholdr.dev/blog/mac-api-key-managers-compared/
