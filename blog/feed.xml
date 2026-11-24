@@ -12,7 +12,7 @@
       <link>https://keyholdr.dev/blog/mac-api-key-managers-compared/</link>
       <guid isPermaLink="true">https://keyholdr.dev/blog/mac-api-key-managers-compared/</guid>
       <pubDate>Tue, 24 Nov 2026 12:00:00 GMT</pubDate>
-      <description>Price, terminal support, Touch ID, sync and .env handling for eight ways to keep API keys on a Mac, including where Keyholdr falls short.</description>
+      <description>Price, terminal support, per-command key injection, Touch ID, sync and .env handling for eight ways to keep API keys on a Mac.</description>
     </item>
     <item>
       <title>Where to store API keys on a Mac (and why .env files leak)</title>
