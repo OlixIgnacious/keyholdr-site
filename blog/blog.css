@@ -47,7 +47,7 @@ a:hover { text-decoration-color: var(--ink); }
 .site-nav a:hover, .site-nav a[aria-current="page"] { opacity: 1; }
 
 main {
-  max-width: 720px;
+  max-width: 780px;
   margin: 0 auto;
   padding: 2rem var(--gutter) 6rem;
 }
@@ -140,6 +140,14 @@ pre .c { color: var(--ink-60); }
 .copy-btn:hover, .copy-btn[data-copied="true"] { border-color: var(--ink); color: var(--ink); }
 
 .table-wrap { overflow-x: auto; margin-top: 1rem; }
+/* A wide table may extend past the text column, centred on the page, up to 1120px. */
+.table-wrap.wide {
+  width: min(1120px, calc(100vw - 2 * var(--gutter)));
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.table-wrap.wide table { min-width: 940px; }
 table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
 th, td { text-align: left; padding: 0.6rem 0.75rem 0.6rem 0; border-bottom: 1px solid var(--ink-12); vertical-align: top; }
 th { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-60); font-weight: 500; }
